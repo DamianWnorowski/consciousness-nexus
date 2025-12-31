@@ -1,0 +1,53 @@
+[package]
+name = "hyperzerocopy-observer"
+version = "1.0.0"
+edition = "2021"
+description = "Revolutionary zero-copy shared-memory Claude Code observer - REAL metrics, ZERO overhead"
+
+[[bin]]
+name = "hzc-daemon"
+path = "src/daemon.rs"
+
+[[bin]]
+name = "hzc-watch"
+path = "src/watch.rs"
+
+[dependencies]
+# Zero-copy shared memory
+memmap2 = "0.9"
+shared_memory = "0.12"
+
+# Lock-free atomics
+crossbeam-utils = "0.8"
+parking_lot = "0.12"
+
+# Serialization - zerocopy native
+rkyv = { version = "0.7", features = ["validation"] }
+bytemuck = { version = "1.14", features = ["derive"] }
+
+# TUI dashboard
+ratatui = "0.26"
+crossterm = "0.27"
+
+# Time - real timestamps only
+chrono = "0.4"
+
+# CLI
+clap = { version = "4.4", features = ["derive"] }
+
+# Async runtime for file watching
+tokio = { version = "1.35", features = ["full"] }
+notify = "6.1"
+
+# Serde for JSON hook integration
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# UUID for unique event IDs
+uuid = { version = "1.0", features = ["v4"] }
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+opt-level = 3
+strip = true

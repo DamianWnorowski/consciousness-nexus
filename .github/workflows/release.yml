@@ -1,0 +1,80 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  pypi:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build twine
+
+    - name: Build package
+      run: python -m build
+
+    - name: Publish to PyPI
+      if: github.event_name == 'release'
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      run: |
+        twine upload dist/*
+
+  npm:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Publish JavaScript SDK
+      run: |
+        cd consciousness-sdk-js
+        npm ci
+        npm run build
+        npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+        npm publish
+
+  crates:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Rust
+      uses: actions-rust-lang/setup-rust-toolchain@v1
+
+    - name: Publish Rust SDK
+      run: |
+        cd consciousness-sdk-rust
+        cargo login ${{ secrets.CRATES_IO_TOKEN }}
+        cargo publish
+
+  go:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.21'
+
+    - name: Publish Go SDK
+      run: |
+        # Go modules are published by pushing to GitHub with proper tags
+        # The go.mod file already points to the GitHub repo
+        echo "Go SDK published via GitHub releases"

@@ -1,0 +1,180 @@
+# 🐳 CONSCIOUSNESS COMPUTING SUITE - DOCKER COMPOSE
+# ================================================
+#
+# Complete deployment stack for Consciousness Suite with monitoring,
+# load balancing, and persistence.
+
+version: '3.8'
+
+services:
+  # Main API Server
+  consciousness-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: consciousness-api
+    ports:
+      - "18473:8000"
+    environment:
+      - CONSCIOUSNESS_API_HOST=0.0.0.0
+      - CONSCIOUSNESS_API_PORT=8000
+      - CONSCIOUSNESS_API_WORKERS=4
+      - CONSCIOUSNESS_API_DEBUG=false
+      - CONSCIOUSNESS_API_AUTH=true
+      - CONSCIOUSNESS_API_KEY=consciousness-api-key-2024
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./configs:/app/configs
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - consciousness-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Redis for caching and sessions
+  redis:
+    image: redis:7-alpine
+    container_name: consciousness-redis
+    ports:
+      - "29481:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - consciousness-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  # PostgreSQL for data persistence
+  postgres:
+    image: postgres:15-alpine
+    container_name: consciousness-postgres
+    environment:
+      - POSTGRES_DB=consciousness
+      - POSTGRES_USER=consciousness
+      - POSTGRES_PASSWORD=consciousness_secure_2024
+    ports:
+      - "17392:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - consciousness-network
+    restart: unless-stopped
+
+  # Nginx reverse proxy with SSL termination
+  nginx:
+    image: nginx:alpine
+    container_name: consciousness-nginx
+    ports:
+      - "25746:80"
+      - "36827:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - nginx_logs:/var/log/nginx
+    depends_on:
+      - consciousness-api
+    networks:
+      - consciousness-network
+    restart: unless-stopped
+
+  # Monitoring with Prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: consciousness-prometheus
+    ports:
+      - "24789:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    networks:
+      - consciousness-network
+    restart: unless-stopped
+
+  # Grafana for dashboards
+  grafana:
+    image: grafana/grafana:latest
+    container_name: consciousness-grafana
+    ports:
+      - "31572:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=consciousness_admin_2024
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - prometheus
+    networks:
+      - consciousness-network
+    restart: unless-stopped
+
+  # Log aggregation with Loki
+  loki:
+    image: grafana/loki:latest
+    container_name: consciousness-loki
+    ports:
+      - "42851:3100"
+    volumes:
+      - ./monitoring/loki-config.yml:/etc/loki/local-config.yaml:ro
+      - loki_data:/loki
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - consciousness-network
+    restart: unless-stopped
+
+  # Log shipping with Promtail
+  promtail:
+    image: grafana/promtail:latest
+    container_name: consciousness-promtail
+    volumes:
+      - ./logs:/var/log/consciousness:ro
+      - ./monitoring/promtail-config.yml:/etc/promtail/config.yml:ro
+    command: -config.file=/etc/promtail/config.yml
+    depends_on:
+      - loki
+    networks:
+      - consciousness-network
+    restart: unless-stopped
+
+  # Web Dashboard
+  dashboard:
+    build:
+      context: ./consciousness-dashboard
+      dockerfile: Dockerfile
+    container_name: consciousness-dashboard
+    ports:
+      - "31573:3000"
+    environment:
+      - VITE_API_BASE_URL=http://consciousness-api:8000
+    depends_on:
+      - consciousness-api
+    networks:
+      - consciousness-network
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+  postgres_data:
+  prometheus_data:
+  grafana_data:
+  nginx_logs:
+  loki_data:
+
+networks:
+  consciousness-network:
+    driver: bridge

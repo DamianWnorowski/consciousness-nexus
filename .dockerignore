@@ -1,0 +1,65 @@
+# AGGRESSIVE EXCLUSIONS FOR FASTER BUILD
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# All data directories
+**/node_modules
+**/__pycache__
+**/*.pyc
+**/venv
+**/.venv
+**/dist
+**/build
+**/*.egg-info
+**/logs
+**/*.log
+
+# Exclude all subdirectories except consciousness_suite
+consciousness-dashboard
+consciousness-sdk-go
+consciousness-sdk-js
+consciousness-sdk-rust
+playwright-e2e-testing
+monitoring
+nginx
+tests
+COS
+MASTER_INDEX
+gap_consciousness_results
+ultimate_consciousness_results
+multi_websearch_results
+
+# Documentation
+*.md
+!README.md
+
+# Config files (not needed in build context)
+*.yml
+!docker-compose.yml
+*.yaml
+docker-compose.yml
+
+# All JSON except package files
+*.json
+!package.json
+
+# Images and binary
+*.png
+*.jpg
+*.gif
+*.ico
+*.exe
+*.dll
+*.so
+*.db
+*.sqlite
+
+# Other
+.env*
+*.swp
+*.swo
+.idea
+.vscode

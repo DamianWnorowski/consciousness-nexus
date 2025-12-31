@@ -1,0 +1,13 @@
+include README.md
+include LICENSE
+include requirements.txt
+include consciousness_evolution_contract.json
+include settings.local.json
+include *.md
+recursive-include logs *
+recursive-include docs *
+recursive-include scripts *
+recursive-include tests *
+global-exclude *.pyc
+global-exclude __pycache__
+global-exclude .git*

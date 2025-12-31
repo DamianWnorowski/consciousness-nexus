@@ -1,0 +1,53 @@
+{
+  "name": "consciousness-dashboard",
+  "version": "2.0.0",
+  "description": "Web Dashboard for Consciousness Computing Suite - Complete Terminal Bypass Interface",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "test": "vitest",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "axios": "^1.6.0",
+    "recharts": "^2.8.0",
+    "lucide-react": "^0.294.0",
+    "@tanstack/react-query": "^5.14.0",
+    "react-router-dom": "^6.20.0",
+    "tailwindcss": "^3.3.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "clsx": "^2.0.0",
+    "date-fns": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.1.0",
+    "vite": "^5.0.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "vitest": "^1.0.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/jest-dom": "^6.0.0"
+  },
+  "keywords": [
+    "ai",
+    "consciousness",
+    "dashboard",
+    "safety",
+    "evolution",
+    "react",
+    "web",
+    "interface"
+  ],
+  "author": "Consciousness AI",
+  "license": "MIT"
+}

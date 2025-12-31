@@ -1,0 +1,26 @@
+[package]
+name = "consciousness-suite-sdk"
+version = "2.0.0"
+edition = "2021"
+description = "Rust SDK for Consciousness Computing Suite - Enterprise AI Safety & Evolution"
+license = "MIT"
+repository = "https://github.com/DAMIANWNOROWSKI/consciousness-suite"
+homepage = "https://consciousness-suite.com"
+documentation = "https://docs.consciousness-suite.com/rust"
+keywords = ["ai", "consciousness", "safety", "evolution", "enterprise"]
+categories = ["api-bindings", "asynchronous"]
+
+[dependencies]
+reqwest = { version = "0.11", features = ["json", "stream"] }
+tokio = { version = "1.0", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+uuid = { version = "1.0", features = ["v4"] }
+futures = "0.3"
+async-stream = "0.3"
+url = "2.0"
+
+[dev-dependencies]
+tokio-test = "0.4"
+mockito = "1.0"

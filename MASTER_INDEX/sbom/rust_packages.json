@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "timestamp": "2025-12-18T01:04:27.859519Z",
+    "generator": "Consciousness Nexus SBOM Generator",
+    "note": "Rust SBOM generation not fully implemented - placeholder"
+  },
+  "packages": [
+    {
+      "name": "consciousness-nexus-rust",
+      "version": "0.1.0",
+      "source": "cargo",
+      "type": "application",
+      "license": "MIT",
+      "description": "Rust components for consciousness computing",
+      "homepage": "https://github.com/consciousness-nexus/rust",
+      "dependencies": [
+        "tokio",
+        "serde",
+        "anyhow"
+      ],
+      "vulnerabilities": []
+    }
+  ]
+}

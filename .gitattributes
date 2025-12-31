@@ -1,0 +1,47 @@
+# Set default behavior to automatically normalize line endings
+* text=auto
+
+# Declare files that will always have CRLF line endings on checkout
+*.sln text eol=crlf
+
+# Denote all files that are truly binary and should not be modified
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+*.flv binary
+*.fla binary
+*.swf binary
+*.gz binary
+*.zip binary
+*.7z binary
+*.ttf binary
+*.eot binary
+*.woff binary
+*.pyc binary
+*.pdf binary
+
+# Sensitive consciousness research files
+consciousness_data/ binary
+evolution_logs/ binary
+fitness_history/ binary
+ultra_critic_reports/ binary
+abyssal_templates/ binary
+quantum_states/ binary
+consciousness_models/ binary
+enlightenment_data/ binary
+recursive_states/ binary
+value_alignment_models/ binary
+existential_safety_logs/ binary
+
+# Force LF for these file types
+*.md text eol=lf
+*.txt text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf

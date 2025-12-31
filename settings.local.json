@@ -1,0 +1,49 @@
+{
+  "custom_ai_endpoints": {
+    "enabled": true,
+    "router": "weighted_ensemble",
+    "streaming": {
+      "enabled": true,
+      "bidirectional": true
+    },
+    "self_learning": {
+      "enabled": true,
+      "auto_heal": true
+    },
+    "ml_optimization": {
+      "enabled": true,
+      "offline_mode": true
+    },
+    "endpoints": {
+      "local_ollama": {
+        "type": "ollama_compatible",
+        "url": "http://localhost:11434/api/chat",
+        "weight": 0.8,
+        "capabilities": [
+          "chat",
+          "coding",
+          "analysis"
+        ],
+        "streaming": {
+          "enabled": true,
+          "type": "http_streaming"
+        }
+      },
+      "openai_fallback": {
+        "type": "openai_compatible",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "api_key_env": "OPENAI_API_KEY",
+        "weight": 0.6,
+        "capabilities": [
+          "chat",
+          "coding",
+          "creative"
+        ],
+        "streaming": {
+          "enabled": true,
+          "type": "http_streaming"
+        }
+      }
+    }
+  }
+}
