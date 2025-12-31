@@ -314,7 +314,7 @@ class TestAuthenticationMiddleware:
         api_key = None
         expected_key = "consciousness-api-key-2024"
 
-        is_valid = api_key and api_key == expected_key
+        is_valid = bool(api_key and api_key == expected_key)
         assert is_valid is False
 
 
