@@ -33,7 +33,7 @@ class ClusterResult:
     silhouette_score: float
     cluster_profiles: List[Dict[str, Any]]
 
-class QuantumClusteringEngine(BaseProcessor):
+class SimpleClusteringEngine(BaseProcessor):
     """
     Simplified density-based clustering engine for consciousness computing.
     """
@@ -554,7 +554,7 @@ class QuantumClusteringEngine(BaseProcessor):
             unique_labels.discard(-1)
             if len(unique_labels) >= 2:
                 return silhouette_score(data, labels)
-        except:
+        except Exception:
             pass
 
         # Fallback: simple score based on cluster separation

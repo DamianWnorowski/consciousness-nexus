@@ -108,8 +108,8 @@ class AsyncTaskManager:
             # Use negative priority for PriorityQueue (lower number = higher priority)
             await self.task_queue.put((-priority, task))
             return task_id
-        except asyncio.QueueFull:
-            raise RuntimeError("Task queue is full")
+        except asyncio.QueueFull as err:
+            raise RuntimeError("Task queue is full") from err
 
     async def get_task_status(self, task_id: str) -> Optional[Dict[str, Any]]:
         """Get status of a specific task"""

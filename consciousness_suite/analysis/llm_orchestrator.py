@@ -140,7 +140,7 @@ class LLMOrchestrator(BaseProcessor):
         result = {
             'llm_responses': [self._serialize_response(r) for r in llm_responses],
             'total_calls': len(llm_responses),
-            'models_used': list(set(r.model for r in llm_responses)),
+            'models_used': list({r.model for r in llm_responses}),
             'average_confidence': sum(r.confidence for r in llm_responses) / len(llm_responses) if llm_responses else 0,
             'api_metrics': self._serialize_api_metrics(),
             'consensus_result': self._serialize_consensus(consensus_result) if consensus_result else None,
@@ -413,7 +413,6 @@ Provide your analysis with confidence levels for each insight.
             insight_counts[insight_key] = insight_counts.get(insight_key, 0) + 1
 
         # Calculate consensus metrics
-        total_insights = len(all_insights)
         agreed_insights = [insight for insight, count in insight_counts.items()
                           if count >= len(responses) * self.consensus_threshold]
 

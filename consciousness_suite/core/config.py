@@ -344,5 +344,5 @@ class ConfigManager:
         return summary
 
 # Import here to avoid circular imports
-import asyncio
-from datetime import datetime
+import asyncio  # noqa: E402
+from datetime import datetime  # noqa: E402

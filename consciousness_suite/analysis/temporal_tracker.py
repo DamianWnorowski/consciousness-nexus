@@ -172,7 +172,7 @@ class TemporalEvolutionTracker(BaseProcessor):
                                         'data': item.get('content', str(item))[:500],  # Truncate
                                         'complexity': self._estimate_content_complexity(item)
                                     })
-                                except:
+                                except Exception:
                                     continue
 
         # Generate synthetic temporal progression if no real data
@@ -319,7 +319,7 @@ class TemporalEvolutionTracker(BaseProcessor):
                     'data_points': len(complexities)
                 }
 
-            except:
+            except Exception:
                 pass
 
         return {
@@ -370,6 +370,7 @@ class TemporalEvolutionTracker(BaseProcessor):
 
         return {
             'prediction_horizon_months': 6,
+            'prediction_horizon': prediction_horizon.isoformat(),
             'predicted_complexity': predicted_complexity,
             'trajectory_type': trajectory,
             'confidence': confidence,

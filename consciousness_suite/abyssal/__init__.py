@@ -18,7 +18,6 @@ import asyncio
 import re
 import time
 from dataclasses import dataclass, field
-from datetime import datetime
 from typing import Any, Dict, List, Optional
 
 from ..core.async_utils import AsyncTaskManager
@@ -511,8 +510,8 @@ class CodeValidatorAgent(BaseAgent):
         super().__init__("CodeValidator")
 
     async def execute(self, parameters: Dict[str, Any], context: ProcessingContext) -> Dict[str, Any]:
-        component = parameters.get('component', 'unknown')
         return {
+            'component': parameters.get('component', 'unknown'),
             'syntax_check': 'PASSED',
             'type_check': 'PASSED',
             'linting_score': 9.2,
@@ -528,8 +527,8 @@ class TestGeneratorAgent(BaseAgent):
         super().__init__("TestGenerator")
 
     async def execute(self, parameters: Dict[str, Any], context: ProcessingContext) -> Dict[str, Any]:
-        component = parameters.get('component', 'unknown')
         return {
+            'component': parameters.get('component', 'unknown'),
             'test_types': ['Unit', 'Integration', 'E2E'],
             'test_files_generated': 8,
             'test_cases': 47,
@@ -547,6 +546,7 @@ class RoadmapPlannerAgent(BaseAgent):
     async def execute(self, parameters: Dict[str, Any], context: ProcessingContext) -> Dict[str, Any]:
         topic = parameters.get('topic', 'unknown')
         return {
+            'topic': topic,
             'roadmap_title': f'2026 {topic.title()} Revolution Roadmap',
             'phases': ['Foundation', 'Expansion', 'Leadership', 'Transcendence'],
             'milestones': 24,
@@ -561,8 +561,8 @@ class SecurityAuditorAgent(BaseAgent):
         super().__init__("SecurityAuditor")
 
     async def execute(self, parameters: Dict[str, Any], context: ProcessingContext) -> Dict[str, Any]:
-        topic = parameters.get('topic', 'unknown')
         return {
+            'topic': parameters.get('topic', 'unknown'),
             'security_assessment': 'COMPREHENSIVE',
             'risk_level': 'MANAGEABLE',
             'identified_gaps': 23,
@@ -577,8 +577,8 @@ class PerformanceOptimizerAgent(BaseAgent):
         super().__init__("PerformanceOptimizer")
 
     async def execute(self, parameters: Dict[str, Any], context: ProcessingContext) -> Dict[str, Any]:
-        system = parameters.get('system', 'unknown')
         return {
+            'system': parameters.get('system', 'unknown'),
             'optimization_targets': ['CPU usage', 'Memory efficiency', 'Response time'],
             'performance_improvements': '45% improvement',
             'bottleneck_identified': 'Database queries',
@@ -592,8 +592,8 @@ class DeploymentCoordinatorAgent(BaseAgent):
         super().__init__("DeploymentCoordinator")
 
     async def execute(self, parameters: Dict[str, Any], context: ProcessingContext) -> Dict[str, Any]:
-        config = parameters.get('config', 'unknown')
         return {
+            'config': parameters.get('config', 'unknown'),
             'deployment_strategy': 'Blue-green deployment',
             'environments': ['Development', 'Staging', 'Production'],
             'rollback_plan': 'Automated rollback within 5 minutes',

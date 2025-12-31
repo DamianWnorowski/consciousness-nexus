@@ -212,9 +212,9 @@ class BaseProcessor(ABC):
         """Return the operation type for this processor"""
         pass
 
-    async def _validate_input(self, input_data: Any):
-        """Validate input data - can be overridden"""
-        pass
+    async def _validate_input(self, input_data: Any) -> None:
+        """Validate input data - can be overridden by subclasses"""
+        return None
 
     async def _validate_output(self, output_data: Dict[str, Any]) -> Dict[str, Any]:
         """Validate output data - can be overridden"""

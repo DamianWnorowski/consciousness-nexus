@@ -131,7 +131,7 @@ class AdaptiveOrchestrator(BaseProcessor):
 
             result = {
                 'adaptations_applied': len(adaptations_applied),
-                'services_optimized': len(set(a['service_id'] for a in adaptations_applied)),
+                'services_optimized': len({a['service_id'] for a in adaptations_applied}),
                 'load_balance_improved': self._calculate_load_balance_improvement(load_analysis),
                 'performance_gain': self._calculate_performance_gain(performance_analysis),
                 'prediction_accuracy': self._calculate_prediction_accuracy(scaling_predictions) if scaling_predictions else None,

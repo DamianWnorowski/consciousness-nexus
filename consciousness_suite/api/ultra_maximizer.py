@@ -129,7 +129,7 @@ class UltraAPIMaximizer(BaseProcessor):
         await self.rate_limiter.acquire()  # Initialize rate limiter
 
         self.logger.info("Ultra API Maximizer initialized", {
-            'optimization_levels': len([l for l in self.optimization_levels.values() if l.enabled]),
+            'optimization_levels': len([lvl for lvl in self.optimization_levels.values() if lvl.enabled]),
             'max_rps': self.rate_limiter.requests_per_second,
             'recursion_enabled': self.enable_recursion
         })
@@ -149,7 +149,7 @@ class UltraAPIMaximizer(BaseProcessor):
         self.logger.info("Starting Ultra API Maximization", {
             'correlation_id': context.correlation_id,
             'input_type': type(input_data).__name__,
-            'max_levels': max([l.level for l in self.optimization_levels.values() if l.enabled])
+            'max_levels': max([lvl.level for lvl in self.optimization_levels.values() if lvl.enabled])
         })
 
         start_time = time.time()
@@ -224,7 +224,7 @@ class UltraAPIMaximizer(BaseProcessor):
             'level_results': level_results,
             'final_metrics': final_metrics,
             'api_metrics': self._serialize_api_metrics(),
-            'optimization_levels': [self._serialize_level(l) for l in self.optimization_levels.values()],
+            'optimization_levels': [self._serialize_level(lvl) for lvl in self.optimization_levels.values()],
             'total_processing_time': total_time,
             'efficiency_achieved': final_metrics.get('overall_efficiency', 0),
             'waste_reduction': final_metrics.get('waste_reduction', 0),
@@ -668,7 +668,7 @@ class UltraAPIMaximizer(BaseProcessor):
         """Get comprehensive optimization statistics"""
         return {
             'total_optimizations': len(self.optimization_history),
-            'active_levels': len([l for l in self.optimization_levels.values() if l.enabled]),
+            'active_levels': len([lvl for lvl in self.optimization_levels.values() if lvl.enabled]),
             'api_metrics': self._serialize_api_metrics(),
             'average_efficiency': sum(
                 h['result'].get('efficiency_achieved', 0)
