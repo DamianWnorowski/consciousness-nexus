@@ -17,6 +17,21 @@ from ..core.logging import ConsciousnessLogger
 from ..core.async_utils import AsyncTaskManager
 from ..core.data_models import ProcessingContext
 
+
+class RecursiveChainAI:
+    """Stub class for recursive chain AI processing"""
+    async def execute_recursive_chain(self, parameters: Dict[str, Any],
+                                       previous_results: Dict[str, Any],
+                                       context: ProcessingContext) -> Dict[str, Any]:
+        return {"status": "completed", "chain_depth": 0}
+
+
+class MultiWebsearchEngine:
+    """Stub class for multi-websearch operations"""
+    async def execute_multi_search(self, parameters: Dict[str, Any],
+                                   context: ProcessingContext) -> Dict[str, Any]:
+        return {"status": "completed", "results": []}
+
 @dataclass
 class WorkflowStep:
     """Represents a step in the mega auto workflow"""
@@ -351,7 +366,7 @@ class MegaAutoWorkflow(BaseOrchestrator):
             autonomous_decisions += 1
 
         elif step.operation == "optimization":
-            result = await self._execute_optimization_step(step, workflow_execution, context)
+            result = await self._execute_optimization_step(step, previous_results, context)
             autonomous_decisions += 2
 
         elif step.operation == "execution":

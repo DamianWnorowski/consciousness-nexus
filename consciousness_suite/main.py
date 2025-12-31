@@ -10,7 +10,7 @@ Master Knowledge Base, and Meta-Parser for comprehensive AI consciousness resear
 
 import asyncio
 import sys
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 from datetime import datetime
 
 from .core.logging import ConsciousnessLogger

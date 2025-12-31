@@ -14,6 +14,11 @@ import random
 from typing import Dict, Any, List, Optional
 from dataclasses import dataclass
 
+try:
+    import numpy as np
+except ImportError:
+    np = None  # Fallback for environments without numpy
+
 from ..core.base import BaseProcessor
 from ..core.data_models import VectorData, ProcessingContext
 
