@@ -34,7 +34,7 @@ impl ConsciousnessClient {
         let http_client = HttpClient::builder()
             .timeout(config.timeout)
             .build()
-            .map_err(|e| ConsciousnessError::Http(e))?;
+            .map_err(ConsciousnessError::Http)?;
 
         Ok(Self {
             config,
@@ -128,7 +128,7 @@ impl ConsciousnessClient {
 
         stream! {
             let response = match client
-                .post(&format!("{}/evolution/run/stream", base_url))
+                .post(format!("{}/evolution/run/stream", base_url))
                 .json(&request)
                 .send()
                 .await
@@ -147,8 +147,7 @@ impl ConsciousnessClient {
                     Ok(chunk) => {
                         let chunk_str = String::from_utf8_lossy(&chunk);
                         for line in chunk_str.lines() {
-                            if line.starts_with("data: ") {
-                                let json_str = &line[6..];
+                            if let Some(json_str) = line.strip_prefix("data: ") {
                                 match serde_json::from_str::<EvolutionProgress>(json_str) {
                                     Ok(progress) => yield Ok(progress),
                                     Err(e) => yield Err(ConsciousnessError::Json(e)),
@@ -238,7 +237,7 @@ impl ConsciousnessClient {
     // Private helper methods
     fn prepare_request(&self, method: reqwest::Method, endpoint: &str) -> RequestBuilder {
         let url = format!("{}{}", self.config.base_url, endpoint);
-        let mut request = self.http_client.request(method, &url);
+        let mut request = self.http_client.request(method, url);
 
         if let Some(api_key) = &self.config.api_key {
             request = request.header("X-API-Key", api_key);
