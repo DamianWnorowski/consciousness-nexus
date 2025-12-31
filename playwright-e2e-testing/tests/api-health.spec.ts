@@ -102,7 +102,12 @@ test.describe('API Server Uptime', () => {
 
 test.describe('API Response Headers', () => {
   test('should include CORS headers', async ({ request }) => {
-    const response = await request.get('/health');
+    // CORS headers are only sent when Origin header is present
+    const response = await request.get('/health', {
+      headers: {
+        'Origin': 'http://localhost:3000',
+      },
+    });
     const headers = response.headers();
 
     // CORS headers should be present
