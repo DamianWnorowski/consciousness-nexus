@@ -167,17 +167,17 @@ def cleanup_sessions():
 @app.on_event("startup")
 async def startup_event():
     """Initialize the consciousness suite on server startup"""
-    logger.info("🚀 Starting Consciousness API Server...")
+    logger.info("[*] Starting Consciousness API Server...")
 
     try:
         await initialize_consciousness_suite()
-        logger.info("✅ Consciousness Suite initialized successfully")
+        logger.info("[OK] Consciousness Suite initialized successfully")
 
         # Start background cleanup task
         asyncio.create_task(session_cleanup_task())
 
     except Exception as e:
-        logger.error(f"❌ Failed to initialize Consciousness Suite: {e}")
+        logger.error(f"[ERROR] Failed to initialize Consciousness Suite: {e}")
         raise
 
 async def session_cleanup_task():
@@ -501,7 +501,7 @@ async def run_evolution_stream(request: EvolutionRequest):
     )
 
 if __name__ == "__main__":
-    print("🛡️ CONSCIOUSNESS COMPUTING SUITE API SERVER")
+    print("[*] CONSCIOUSNESS COMPUTING SUITE API SERVER")
     print("=" * 50)
     print(f"Host: {APIConfig.HOST}")
     print(f"Port: {APIConfig.PORT}")
@@ -519,7 +519,7 @@ if __name__ == "__main__":
     print("  POST /validation/run - Run validation checks")
     print("  POST /analysis/run - Run analysis operations")
     print()
-    print("🚀 Starting server...")
+    print("[*] Starting server...")
 
     uvicorn.run(
         "consciousness_api_server:app",

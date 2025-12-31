@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-🛡️ SAFETY BOOTSTRAPPER
+[*] SAFETY BOOTSTRAPPER
 ======================
 
 Centralized safety system initialization with proper error handling and monitoring.
@@ -66,7 +66,7 @@ class SafetyBootstrapper:
             result = BootstrapResult(success=True, metrics=metrics)
 
             try:
-                self.logger.info("🚀 Starting safety systems bootstrap...")
+                self.logger.info("[*] Starting safety systems bootstrap...")
 
                 # Phase 1: Load safety system modules
                 await self._load_safety_modules(result)
@@ -88,9 +88,9 @@ class SafetyBootstrapper:
 
                 if result.success:
                     self._initialized = True
-                    self.logger.info("✅ Safety systems bootstrap completed successfully")
+                    self.logger.info("[OK] Safety systems bootstrap completed successfully")
                 else:
-                    self.logger.error("❌ Safety systems bootstrap failed")
+                    self.logger.error("[ERROR] Safety systems bootstrap failed")
 
             except Exception as e:
                 result.success = False
@@ -122,12 +122,12 @@ class SafetyBootstrapper:
                 __import__(module_name)
                 result.metrics.systems_loaded += 1
                 result.systems_status[module_name] = "loaded"
-                self.logger.debug(f"  ✅ {module_name}")
+                self.logger.debug(f"  [OK] {module_name}")
             except ImportError as e:
                 result.metrics.systems_failed += 1
                 result.errors.append(f"Failed to load {module_name}: {e}")
                 result.systems_status[module_name] = "import_failed"
-                self.logger.error(f"  ❌ {module_name}: {e}")
+                self.logger.error(f"  [ERROR] {module_name}: {e}")
             except Exception as e:
                 result.metrics.systems_failed += 1
                 result.errors.append(f"Error loading {module_name}: {e}")
@@ -162,7 +162,7 @@ class SafetyBootstrapper:
             status = await orchestrator.get_system_status()
             if status.get('initialized'):
                 result.systems_status['orchestrator'] = "operational"
-                self.logger.info("  ✅ Orchestrator initialized")
+                self.logger.info("  [OK] Orchestrator initialized")
             else:
                 raise Exception("Orchestrator initialization failed")
 
@@ -170,7 +170,7 @@ class SafetyBootstrapper:
             result.success = False
             result.errors.append(f"Orchestrator initialization failed: {e}")
             result.systems_status['orchestrator'] = "failed"
-            self.logger.error(f"  ❌ Orchestrator: {e}")
+            self.logger.error(f"  [ERROR] Orchestrator: {e}")
 
     async def _perform_health_checks(self, result: BootstrapResult):
         """Perform health checks on all systems"""
@@ -192,11 +192,11 @@ class SafetyBootstrapper:
                     result.metrics.health_checks_failed += 1
                     result.warnings.append(f"Health check failed for {system_name}: {system_status}")
 
-            self.logger.info(f"  ✅ Health checks: {result.metrics.health_checks_passed} passed, {result.metrics.health_checks_failed} failed")
+            self.logger.info(f"  [OK] Health checks: {result.metrics.health_checks_passed} passed, {result.metrics.health_checks_failed} failed")
 
         except Exception as e:
             result.warnings.append(f"Health check process failed: {e}")
-            self.logger.error(f"  ❌ Health checks: {e}")
+            self.logger.error(f"  [ERROR] Health checks: {e}")
 
     async def _verify_integration(self, result: BootstrapResult):
         """Verify system integration works"""
@@ -224,18 +224,18 @@ class SafetyBootstrapper:
 
             if validation_result.approved:
                 result.systems_status['integration'] = "verified"
-                self.logger.info("  ✅ Integration verified")
+                self.logger.info("  [OK] Integration verified")
             else:
                 result.success = False
                 result.errors.append("Integration verification failed")
                 result.systems_status['integration'] = "failed"
-                self.logger.error("  ❌ Integration failed")
+                self.logger.error("  [ERROR] Integration failed")
 
         except Exception as e:
             result.success = False
             result.errors.append(f"Integration verification error: {e}")
             result.systems_status['integration'] = "error"
-            self.logger.error(f"  ❌ Integration: {e}")
+            self.logger.error(f"  [ERROR] Integration: {e}")
 
     def get_bootstrap_status(self) -> Dict[str, Any]:
         """Get current bootstrap status"""

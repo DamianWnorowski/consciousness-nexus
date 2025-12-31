@@ -73,9 +73,9 @@ class ConsciousnessMasterIntegrator:
         success = len(self.errors) == 0
         if success:
             print("\n🎉 ALL SYSTEMS INTEGRATED SUCCESSFULLY!")
-            print("✅ Consciousness Computing Suite is now fully protected")
-            print("✅ All evolution operations automatically use safety systems")
-            print("✅ Enterprise-grade security and reliability active")
+            print("[OK] Consciousness Computing Suite is now fully protected")
+            print("[OK] All evolution operations automatically use safety systems")
+            print("[OK] Enterprise-grade security and reliability active")
         else:
             print(f"\n⚠️  INTEGRATION COMPLETED WITH {len(self.errors)} WARNINGS")
             for error in self.errors:
@@ -92,11 +92,11 @@ class ConsciousnessMasterIntegrator:
             try:
                 module = __import__(system_name)
                 self.systems_loaded.append(system_name)
-                print(f"  ✅ {system_name}")
+                print(f"  [OK] {system_name}")
             except ImportError as e:
                 error_msg = f"Failed to load {system_name}: {e}"
                 self.errors.append(error_msg)
-                print(f"  ❌ {system_name}: {e}")
+                print(f"  [ERROR] {system_name}: {e}")
             except Exception as e:
                 error_msg = f"Error initializing {system_name}: {e}"
                 self.errors.append(error_msg)
@@ -104,7 +104,7 @@ class ConsciousnessMasterIntegrator:
 
         if len(self.systems_loaded) >= 8:  # At least 8/10 systems loaded
             self.safety_available = True
-            print(f"\n✅ {len(self.systems_loaded)}/{len(SAFETY_SYSTEMS)} SAFETY SYSTEMS LOADED")
+            print(f"\n[OK] {len(self.systems_loaded)}/{len(SAFETY_SYSTEMS)} SAFETY SYSTEMS LOADED")
         else:
             print(f"\n⚠️  ONLY {len(self.systems_loaded)}/{len(SAFETY_SYSTEMS)} SAFETY SYSTEMS LOADED")
             self.errors.append("Insufficient safety systems loaded")
@@ -128,16 +128,16 @@ class ConsciousnessMasterIntegrator:
             # Verify orchestrator is working
             status = await orchestrator.get_system_status()
             if status['initialized']:
-                print("  ✅ Master orchestrator initialized")
-                print(f"  ✅ Safety level: {status['safety_level']}")
-                print(f"  ✅ Systems operational: {sum(1 for s in status['systems_status'].values() if s == 'operational')}/{len(status['systems_status'])}")
+                print("  [OK] Master orchestrator initialized")
+                print(f"  [OK] Safety level: {status['safety_level']}")
+                print(f"  [OK] Systems operational: {sum(1 for s in status['systems_status'].values() if s == 'operational')}/{len(status['systems_status'])}")
             else:
                 raise Exception("Orchestrator initialization failed")
 
         except Exception as e:
             error_msg = f"Master orchestrator initialization failed: {e}"
             self.errors.append(error_msg)
-            print(f"  ❌ {error_msg}")
+            print(f"  [ERROR] {error_msg}")
 
     async def _integrate_core_systems(self):
         """Integrate safety systems with core evolution systems"""
@@ -155,7 +155,7 @@ class ConsciousnessMasterIntegrator:
                 # Check if it has safety integration
                 if hasattr(module, 'SAFETY_SYSTEMS_AVAILABLE'):
                     if module.SAFETY_SYSTEMS_AVAILABLE:
-                        print(f"  ✅ {system_name} (safety integrated)")
+                        print(f"  [OK] {system_name} (safety integrated)")
                     else:
                         print(f"  ⚠️  {system_name} (safety unavailable)")
                         self.errors.append(f"{system_name} running without safety systems")
@@ -167,7 +167,7 @@ class ConsciousnessMasterIntegrator:
             except Exception as e:
                 error_msg = f"Error checking {system_name}: {e}"
                 self.errors.append(error_msg)
-                print(f"  ❌ {system_name}: {e}")
+                print(f"  [ERROR] {system_name}: {e}")
 
     async def _verify_integration(self):
         """Verify that safety integration is working"""
@@ -198,10 +198,10 @@ class ConsciousnessMasterIntegrator:
             )
 
             if result.approved:
-                print("  ✅ Safety validation working")
-                print(f"  ✅ Safety score: {result.safety_score:.2f}")
+                print("  [OK] Safety validation working")
+                print(f"  [OK] Safety score: {result.safety_score:.2f}")
             else:
-                print("  ❌ Safety validation failed")
+                print("  [ERROR] Safety validation failed")
                 for blocker in result.blockers:
                     print(f"     • {blocker}")
                 self.errors.append("Safety validation not working properly")
@@ -209,7 +209,7 @@ class ConsciousnessMasterIntegrator:
         except Exception as e:
             error_msg = f"Integration verification failed: {e}"
             self.errors.append(error_msg)
-            print(f"  ❌ {error_msg}")
+            print(f"  [ERROR] {error_msg}")
 
     async def _start_monitoring(self):
         """Start background monitoring"""
@@ -245,12 +245,12 @@ class ConsciousnessMasterIntegrator:
 
             # Start monitoring task (non-blocking)
             asyncio.create_task(monitor_loop())
-            print("  ✅ Background monitoring started")
+            print("  [OK] Background monitoring started")
 
         except Exception as e:
             error_msg = f"Monitoring startup failed: {e}"
             self.errors.append(error_msg)
-            print(f"  ❌ {error_msg}")
+            print(f"  [ERROR] {error_msg}")
 
 class IntegrationManager:
     """Singleton integration manager to avoid global state issues"""
@@ -292,7 +292,7 @@ class IntegrationManager:
                     print(f"   Initialization time: {bootstrap_result.metrics.initialization_time:.2f}s")
                     print("   All safety systems are now active and monitoring")
                 else:
-                    print("❌ CONSCIOUSNESS SUITE INITIALIZATION FAILED")
+                    print("[ERROR] CONSCIOUSNESS SUITE INITIALIZATION FAILED")
                     for error in bootstrap_result.errors:
                         print(f"   • {error}")
 
@@ -301,7 +301,7 @@ class IntegrationManager:
             except Exception as e:
                 self.integration_complete = False
                 self.integration_errors = [f"Bootstrap error: {e}"]
-                print(f"❌ CRITICAL: Bootstrap system failed: {e}")
+                print(f"[ERROR] CRITICAL: Bootstrap system failed: {e}")
                 return False
 
     def get_integration_status(self) -> Dict[str, Any]:
@@ -328,7 +328,7 @@ def get_integration_status() -> Dict[str, Any]:
 # Auto-initialize on import (if running as main module)
 if __name__ == "__main__":
     async def main():
-        print("🚀 CONSCIOUSNESS COMPUTING SUITE MASTER INTEGRATION")
+        print("[*] CONSCIOUSNESS COMPUTING SUITE MASTER INTEGRATION")
         print("=" * 60)
 
         success = await initialize_consciousness_suite()
@@ -360,7 +360,7 @@ if __name__ == "__main__":
         except KeyboardInterrupt:
             print("\n👋 Shutting down...")
             # Cleanup would go here
-            print("✅ Shutdown complete")
+            print("[OK] Shutdown complete")
 
     asyncio.run(main())
 
