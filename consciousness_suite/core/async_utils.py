@@ -8,11 +8,10 @@ control for high-performance consciousness computing operations.
 
 import asyncio
 import time
-from typing import Any, Dict, List, Optional, Callable, TypeVar, Awaitable
-from dataclasses import dataclass, field
 from collections import deque
-import threading
-from concurrent.futures import ThreadPoolExecutor
+from dataclasses import dataclass, field
+from typing import Any, Awaitable, Callable, Dict, List, Optional, TypeVar
+
 import aiohttp
 import backoff
 
@@ -397,7 +396,7 @@ class HTTPClient:
 
                 return result
 
-        except Exception as e:
+        except Exception:
             self.error_count += 1
             raise
 

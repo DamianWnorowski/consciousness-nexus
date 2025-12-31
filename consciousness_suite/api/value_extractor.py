@@ -6,8 +6,10 @@ Specialized component for extracting, amplifying, and synthesizing
 value from API responses across all optimization levels.
 """
 
-from typing import Dict, Any, List, Optional
+from typing import Any, Dict, Optional
+
 from ..core.base import BaseProcessor
+
 
 class ValueExtractor(BaseProcessor):
     """Extracts maximum value from API responses"""

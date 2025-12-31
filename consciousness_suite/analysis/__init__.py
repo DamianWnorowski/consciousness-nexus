@@ -7,12 +7,12 @@ LLM orchestration, temporal tracking, and predictive modeling.
 """
 
 from .elite_analyzer import EliteStackedAnalyzer
-from .quantum_clustering import QuantumClusteringEngine
+from .executive_synthesizer import ExecutiveSynthesizer
 from .llm_orchestrator import LLMOrchestrator
-from .temporal_tracker import TemporalEvolutionTracker
 from .platform_synthesizer import CrossPlatformSynthesizer
 from .predictive_engine import PredictiveIntelligenceEngine
-from .executive_synthesizer import ExecutiveSynthesizer
+from .quantum_clustering import QuantumClusteringEngine
+from .temporal_tracker import TemporalEvolutionTracker
 
 __all__ = [
     'EliteStackedAnalyzer',

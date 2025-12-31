@@ -14,12 +14,12 @@ A revolutionary service mesh architecture featuring:
 - Real-time performance monitoring and predictive scaling
 """
 
-from .elite_mesh_core import EliteMeshCore, MeshServiceNode
-from .self_evolution_engine import SelfEvolutionEngine
 from .adaptive_orchestrator import AdaptiveOrchestrator
-from .service_mesh_router import ServiceMeshRouter
-from .quality_gatekeeper import QualityGatekeeper
+from .elite_mesh_core import EliteMeshCore, MeshServiceNode
 from .predictive_scaler import PredictiveScaler
+from .quality_gatekeeper import QualityGatekeeper
+from .self_evolution_engine import SelfEvolutionEngine
+from .service_mesh_router import ServiceMeshRouter
 
 __all__ = [
     'EliteMeshCore',

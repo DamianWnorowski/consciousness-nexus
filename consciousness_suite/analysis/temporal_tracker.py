@@ -6,15 +6,13 @@ Tracks temporal evolution patterns in consciousness computing data,
 identifying breakthrough moments, learning acceleration, and future trajectories.
 """
 
-import asyncio
-from typing import Dict, Any, List, Optional
 from dataclasses import dataclass
 from datetime import datetime, timedelta
-import statistics
-from collections import defaultdict
+from typing import Any, Dict, List, Optional
 
 from ..core.base import BaseProcessor
 from ..core.data_models import ProcessingContext
+
 
 @dataclass
 class EvolutionPeriod:

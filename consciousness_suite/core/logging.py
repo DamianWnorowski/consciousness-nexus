@@ -6,16 +6,17 @@ Advanced logging system with structured JSON output, correlation IDs,
 performance monitoring, and consciousness-aware log analysis.
 """
 
-import logging
+import asyncio
 import json
+import logging
+import threading
 import time
 import uuid
-from typing import Dict, Any, Optional, List
+from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
-import asyncio
-from collections import defaultdict
-import threading
+from typing import Any, Dict, List, Optional
+
 
 class ConsciousnessLogger:
     """
@@ -355,7 +356,7 @@ class LogAnalyzer:
         performance_metrics = []
         operations = defaultdict(list)
 
-        with open(log_path, 'r', encoding='utf-8') as f:
+        with open(log_path, encoding='utf-8') as f:
             for line in f:
                 try:
                     log_entry = json.loads(line.strip())

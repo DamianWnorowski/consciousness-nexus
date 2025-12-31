@@ -9,14 +9,14 @@ all components.
 
 import asyncio
 import time
-import logging
 from abc import ABC, abstractmethod
-from typing import Dict, Any, List, Optional, Union
 from dataclasses import dataclass, field
 from datetime import datetime
+from typing import Any, Dict, List, Optional
 
-from .logging import ConsciousnessLogger
 from .config import ConfigManager
+from .logging import ConsciousnessLogger
+
 
 @dataclass
 class ProcessingContext:

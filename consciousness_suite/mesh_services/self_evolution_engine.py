@@ -12,15 +12,15 @@ Enables services to self-evolve through recursive meta-improvement cycles:
 """
 
 import asyncio
-import time
-from typing import Dict, Any, List, Optional
-from datetime import datetime, timedelta
 import statistics
-from dataclasses import dataclass, field
+import time
+from dataclasses import dataclass
+from datetime import datetime
+from typing import Any, Dict, List, Optional
 
 from ..core.base import BaseProcessor
-from ..core.logging import ConsciousnessLogger
 from .elite_mesh_core import MeshServiceNode, ServiceQuality
+
 
 @dataclass
 class EvolutionPattern:

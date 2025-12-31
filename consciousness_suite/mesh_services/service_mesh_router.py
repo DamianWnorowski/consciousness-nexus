@@ -11,9 +11,10 @@ Advanced routing engine with:
 5. Adaptive Routing Rules - Learn and adapt routing patterns
 """
 
-from typing import Dict, Any, List, Optional
+from typing import Any, Dict, Optional
+
 from ..core.base import BaseProcessor
-from .elite_mesh_core import MeshServiceNode
+
 
 class ServiceMeshRouter(BaseProcessor):
     """Intelligent router for Elite Mesh Services"""

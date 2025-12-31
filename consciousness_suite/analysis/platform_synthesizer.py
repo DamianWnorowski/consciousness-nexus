@@ -6,9 +6,11 @@ Synthesizes insights across multiple platforms and data sources,
 resolving conflicts and identifying emergent intelligence patterns.
 """
 
-from typing import Dict, Any, List, Optional
+from typing import Any, Dict, Optional
+
 from ..core.base import BaseProcessor
 from ..core.data_models import ProcessingContext
+
 
 class CrossPlatformSynthesizer(BaseProcessor):
     """Synthesizes insights across platforms"""

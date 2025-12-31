@@ -12,14 +12,14 @@ Implements the 5-level API optimization hierarchy for maximum value extraction:
 
 import asyncio
 import time
-from typing import Dict, Any, List, Optional
 from dataclasses import dataclass, field
 from datetime import datetime
+from typing import Any, Dict, List, Optional
 
+from ..core.async_utils import AsyncTaskManager, HTTPClient, RateLimiter
 from ..core.base import BaseProcessor
-from ..core.logging import ConsciousnessLogger
-from ..core.async_utils import RateLimiter, AsyncTaskManager, HTTPClient
 from ..core.data_models import APICall, APIMetrics, ProcessingContext
+
 
 @dataclass
 class OptimizationLevel:

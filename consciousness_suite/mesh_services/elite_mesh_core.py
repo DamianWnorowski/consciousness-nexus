@@ -15,17 +15,14 @@ Features:
 
 import asyncio
 import time
-import hashlib
 import uuid
-from typing import Dict, Any, List, Optional, Set, Tuple
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
+from datetime import datetime
 from enum import Enum
-import json
+from typing import Any, Dict, List, Optional, Set
 
 from ..core.base import BaseOrchestrator, ProcessingContext
-from ..core.logging import ConsciousnessLogger
-from ..core.async_utils import RateLimiter, AsyncTaskManager
+
 
 class ServiceQuality(Enum):
     """Elite quality standards"""
@@ -252,9 +249,9 @@ class EliteMeshCore(BaseOrchestrator):
         self.logger.info("Initializing Elite Mesh Core")
 
         # Initialize sub-components
+        from .adaptive_orchestrator import AdaptiveOrchestrator
         from .quality_gatekeeper import QualityGatekeeper
         from .self_evolution_engine import SelfEvolutionEngine
-        from .adaptive_orchestrator import AdaptiveOrchestrator
 
         self.quality_gatekeeper = QualityGatekeeper()
         self.evolution_engine = SelfEvolutionEngine()
@@ -425,7 +422,7 @@ class EliteMeshCore(BaseOrchestrator):
 
             return response
 
-        except Exception as e:
+        except Exception:
             # Update node health on failure
             node.update_health_metrics(5000, False)  # 5 second timeout
 

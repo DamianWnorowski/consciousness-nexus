@@ -7,9 +7,9 @@ consciousness pattern recognition.
 """
 
 import asyncio
-from typing import Dict, Any, List, Optional
+
 from ..core.base import BaseProcessor
-from ..core.data_models import ProcessingContext
+
 
 class IntelligenceAmplifier(BaseProcessor):
     """Amplifies intelligence through API optimization"""

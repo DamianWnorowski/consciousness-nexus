@@ -6,15 +6,13 @@ Implements Mega Auto Mode with recursive chain AI, multi-websearch capabilities,
 and fully autonomous workflow execution with self-optimization.
 """
 
-import asyncio
 import time
-from typing import Dict, Any, List, Optional
 from dataclasses import dataclass, field
 from datetime import datetime
+from typing import Any, Dict, List, Optional
 
-from ..core.base import BaseOrchestrator
-from ..core.logging import ConsciousnessLogger
 from ..core.async_utils import AsyncTaskManager
+from ..core.base import BaseOrchestrator
 from ..core.data_models import ProcessingContext
 
 

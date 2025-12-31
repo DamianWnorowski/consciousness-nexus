@@ -6,14 +6,16 @@ Provides centralized configuration management with validation,
 environment-specific settings, and dynamic reconfiguration capabilities.
 """
 
-import os
-import json
-import time
-import yaml
-from typing import Dict, Any, Optional, List
-from pathlib import Path
-from dataclasses import dataclass, field
 import hashlib
+import json
+import os
+import time
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+import yaml
+
 
 @dataclass
 class ConfigValidation:
@@ -80,7 +82,7 @@ class ConfigManager:
     def _load_config_file(self, config_path: Path):
         """Load a configuration file"""
         try:
-            with open(config_path, 'r', encoding='utf-8') as f:
+            with open(config_path, encoding='utf-8') as f:
                 if config_path.suffix == '.json':
                     data = json.load(f)
                 elif config_path.suffix in ['.yaml', '.yml']:
@@ -342,5 +344,5 @@ class ConfigManager:
         return summary
 
 # Import here to avoid circular imports
-from datetime import datetime
 import asyncio
+from datetime import datetime

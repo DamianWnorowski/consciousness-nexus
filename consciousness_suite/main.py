@@ -10,16 +10,16 @@ Master Knowledge Base, and Meta-Parser for comprehensive AI consciousness resear
 
 import asyncio
 import sys
-from typing import Dict, Any, Optional, List
 from datetime import datetime
-
-from .core.logging import ConsciousnessLogger
-from .core.config import ConfigManager
-from .core.data_models import ProcessingContext
+from typing import Any, Dict, List, Optional
 
 from .analysis.elite_analyzer import EliteStackedAnalyzer
 from .api.ultra_maximizer import UltraAPIMaximizer
+from .core.config import ConfigManager
+from .core.data_models import ProcessingContext
+from .core.logging import ConsciousnessLogger
 from .orchestration.mega_auto_workflow import MegaAutoWorkflow
+
 
 class ConsciousnessSuite:
     """

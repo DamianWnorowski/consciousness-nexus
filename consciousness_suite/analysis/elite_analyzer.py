@@ -6,25 +6,19 @@ The core analyzer that orchestrates 7 layers of intelligence processing
 for maximum insight extraction from consciousness computing data.
 """
 
-import asyncio
 import time
-from typing import Dict, Any, List, Optional
 from datetime import datetime
+from typing import Any, Dict, List, Optional
 
 from ..core.base import BaseAnalyzer
-from ..core.logging import ConsciousnessLogger
-from ..core.config import ConfigManager
-from ..core.data_models import (
-    AnalysisLayer, StackedAnalysisResult, ProcessingContext,
-    ConfidenceScore, ProcessingMetadata
-)
-
-from .quantum_clustering import QuantumClusteringEngine
+from ..core.data_models import AnalysisLayer, ProcessingContext, StackedAnalysisResult
+from .executive_synthesizer import ExecutiveSynthesizer
 from .llm_orchestrator import LLMOrchestrator
-from .temporal_tracker import TemporalEvolutionTracker
 from .platform_synthesizer import CrossPlatformSynthesizer
 from .predictive_engine import PredictiveIntelligenceEngine
-from .executive_synthesizer import ExecutiveSynthesizer
+from .quantum_clustering import QuantumClusteringEngine
+from .temporal_tracker import TemporalEvolutionTracker
+
 
 class EliteStackedAnalyzer(BaseAnalyzer):
     """

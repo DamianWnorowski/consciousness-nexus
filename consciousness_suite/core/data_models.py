@@ -6,11 +6,12 @@ Common data structures and models used across all consciousness computing system
 Provides type safety, validation, and serialization capabilities.
 """
 
-from dataclasses import dataclass, field, asdict
-from typing import Dict, Any, List, Optional, Union, Set
-from datetime import datetime
 import json
 import uuid
+from dataclasses import asdict, dataclass, field
+from datetime import datetime
+from typing import Any, Dict, List, Optional, Set
+
 
 @dataclass
 class VectorData:

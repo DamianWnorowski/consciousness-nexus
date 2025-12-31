@@ -8,14 +8,16 @@ and intelligence amplification for consciousness computing analysis.
 
 import asyncio
 import json
-import numpy as np
-from typing import Dict, Any, List, Optional
 from dataclasses import dataclass
 from datetime import datetime
+from typing import Any, Dict, List, Optional
 
+import numpy as np
+
+from ..core.async_utils import AsyncTaskManager, RateLimiter
 from ..core.base import BaseProcessor
-from ..core.async_utils import RateLimiter, HTTPClient, AsyncTaskManager
 from ..core.data_models import APICall, APIMetrics, ProcessingContext
+
 
 @dataclass
 class LLMResponse:

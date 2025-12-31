@@ -11,8 +11,8 @@ This is a simplified version that works without external ML libraries.
 import asyncio
 import math
 import random
-from typing import Dict, Any, List, Optional
 from dataclasses import dataclass
+from typing import Any, Dict, List, Optional
 
 try:
     import numpy as np
@@ -20,7 +20,8 @@ except ImportError:
     np = None  # Fallback for environments without numpy
 
 from ..core.base import BaseProcessor
-from ..core.data_models import VectorData, ProcessingContext
+from ..core.data_models import ProcessingContext, VectorData
+
 
 @dataclass
 class ClusterResult:

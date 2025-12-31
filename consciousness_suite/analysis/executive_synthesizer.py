@@ -5,9 +5,11 @@ Executive Synthesizer - Layer 7 of Elite Stacked Analysis
 Generates executive summaries, strategic recommendations, and implementation roadmaps.
 """
 
-from typing import Dict, Any, List, Optional
+from typing import Any, Dict, Optional
+
 from ..core.base import BaseProcessor
 from ..core.data_models import AnalysisLayer, ProcessingContext
+
 
 class ExecutiveSynthesizer(BaseProcessor):
     """Generates executive synthesis and action planning"""

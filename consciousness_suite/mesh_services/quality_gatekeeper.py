@@ -11,9 +11,11 @@ Enforces elite quality standards across all mesh services:
 5. Elite Standard Compliance - 99.9%+ uptime guarantees
 """
 
-from typing import Dict, Any, List, Optional
+from typing import Any, Dict, List, Optional
+
 from ..core.base import BaseProcessor
 from .elite_mesh_core import MeshServiceNode, ServiceQuality
+
 
 class QualityGatekeeper(BaseProcessor):
     """Quality Gatekeeper for Elite Mesh Services"""

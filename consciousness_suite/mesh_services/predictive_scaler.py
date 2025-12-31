@@ -11,9 +11,10 @@ Predictive scaling engine using:
 5. Auto-scaling Policies - Intelligent resource allocation
 """
 
-from typing import Dict, Any, List, Optional
+from typing import Any, Dict, Optional
+
 from ..core.base import BaseProcessor
-from .elite_mesh_core import MeshServiceNode
+
 
 class PredictiveScaler(BaseProcessor):
     """Predictive scaling engine for Elite Mesh Services"""

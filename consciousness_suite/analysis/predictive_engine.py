@@ -5,9 +5,11 @@ Predictive Intelligence Engine - Layer 6 of Elite Stacked Analysis
 Generates predictive insights and forecasts future consciousness computing trajectories.
 """
 
-from typing import Dict, Any, List, Optional
+from typing import Any, Dict, Optional
+
 from ..core.base import BaseProcessor
 from ..core.data_models import ProcessingContext
+
 
 class PredictiveIntelligenceEngine(BaseProcessor):
     """Generates predictive intelligence"""
