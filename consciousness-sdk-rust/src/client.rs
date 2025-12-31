@@ -54,9 +54,7 @@ impl ConsciousnessClient {
             password: password.to_string(),
         };
 
-        let response: ApiResponse<LoginData> = self
-            .post("/auth/login", &request)
-            .await?;
+        let response: ApiResponse<LoginData> = self.post("/auth/login", &request).await?;
 
         if response.success {
             if let Some(data) = response.data {
@@ -66,11 +64,13 @@ impl ConsciousnessClient {
                     roles: data.roles,
                 })
             } else {
-                Err(ConsciousnessError::Api("No data in login response".to_string()))
+                Err(ConsciousnessError::Api(
+                    "No data in login response".to_string(),
+                ))
             }
         } else {
             Err(ConsciousnessError::Api(
-                response.error.unwrap_or_else(|| "Login failed".to_string())
+                response.error.unwrap_or_else(|| "Login failed".to_string()),
             ))
         }
     }
@@ -92,15 +92,17 @@ impl ConsciousnessClient {
             session_id: self.session_id.clone(),
         };
 
-        let response: ApiResponse<EvolutionResult> = self
-            .post("/evolution/run", &request)
-            .await?;
+        let response: ApiResponse<EvolutionResult> = self.post("/evolution/run", &request).await?;
 
         if response.success {
-            response.data.ok_or_else(|| ConsciousnessError::Api("No evolution result".to_string()))
+            response
+                .data
+                .ok_or_else(|| ConsciousnessError::Api("No evolution result".to_string()))
         } else {
             Err(ConsciousnessError::Api(
-                response.error.unwrap_or_else(|| "Evolution failed".to_string())
+                response
+                    .error
+                    .unwrap_or_else(|| "Evolution failed".to_string()),
             ))
         }
     }
@@ -173,15 +175,18 @@ impl ConsciousnessClient {
             user_id: "rust_sdk_user".to_string(),
         };
 
-        let response: ApiResponse<ValidationResult> = self
-            .post("/validation/run", &request)
-            .await?;
+        let response: ApiResponse<ValidationResult> =
+            self.post("/validation/run", &request).await?;
 
         if response.success {
-            response.data.ok_or_else(|| ConsciousnessError::Api("No validation result".to_string()))
+            response
+                .data
+                .ok_or_else(|| ConsciousnessError::Api("No validation result".to_string()))
         } else {
             Err(ConsciousnessError::Api(
-                response.error.unwrap_or_else(|| "Validation failed".to_string())
+                response
+                    .error
+                    .unwrap_or_else(|| "Validation failed".to_string()),
             ))
         }
     }
@@ -198,15 +203,18 @@ impl ConsciousnessClient {
             user_id: "rust_sdk_user".to_string(),
         };
 
-        let response: ApiResponse<HashMap<String, serde_json::Value>> = self
-            .post("/analysis/run", &request)
-            .await?;
+        let response: ApiResponse<HashMap<String, serde_json::Value>> =
+            self.post("/analysis/run", &request).await?;
 
         if response.success {
-            response.data.ok_or_else(|| ConsciousnessError::Api("No analysis result".to_string()))
+            response
+                .data
+                .ok_or_else(|| ConsciousnessError::Api("No analysis result".to_string()))
         } else {
             Err(ConsciousnessError::Api(
-                response.error.unwrap_or_else(|| "Analysis failed".to_string())
+                response
+                    .error
+                    .unwrap_or_else(|| "Analysis failed".to_string()),
             ))
         }
     }
@@ -226,9 +234,7 @@ impl ConsciousnessClient {
     /// Logout and end session
     pub async fn logout(&mut self) -> Result<(), ConsciousnessError> {
         if let Some(session_id) = &self.session_id {
-            let _: serde_json::Value = self
-                .delete(&format!("/session/{}", session_id))
-                .await?;
+            let _: serde_json::Value = self.delete(&format!("/session/{}", session_id)).await?;
             self.session_id = None;
         }
         Ok(())
@@ -246,8 +252,12 @@ impl ConsciousnessClient {
         request.header("Content-Type", "application/json")
     }
 
-    async fn get<T: for<'de> Deserialize<'de>>(&self, endpoint: &str) -> Result<T, ConsciousnessError> {
-        let response = self.prepare_request(reqwest::Method::GET, endpoint)
+    async fn get<T: for<'de> Deserialize<'de>>(
+        &self,
+        endpoint: &str,
+    ) -> Result<T, ConsciousnessError> {
+        let response = self
+            .prepare_request(reqwest::Method::GET, endpoint)
             .send()
             .await
             .map_err(ConsciousnessError::Http)?;
@@ -260,7 +270,8 @@ impl ConsciousnessClient {
         endpoint: &str,
         data: &T,
     ) -> Result<R, ConsciousnessError> {
-        let response = self.prepare_request(reqwest::Method::POST, endpoint)
+        let response = self
+            .prepare_request(reqwest::Method::POST, endpoint)
             .json(data)
             .send()
             .await
@@ -269,8 +280,12 @@ impl ConsciousnessClient {
         response.json().await.map_err(ConsciousnessError::Http)
     }
 
-    async fn delete<T: for<'de> Deserialize<'de>>(&self, endpoint: &str) -> Result<T, ConsciousnessError> {
-        let response = self.prepare_request(reqwest::Method::DELETE, endpoint)
+    async fn delete<T: for<'de> Deserialize<'de>>(
+        &self,
+        endpoint: &str,
+    ) -> Result<T, ConsciousnessError> {
+        let response = self
+            .prepare_request(reqwest::Method::DELETE, endpoint)
             .send()
             .await
             .map_err(ConsciousnessError::Http)?;
