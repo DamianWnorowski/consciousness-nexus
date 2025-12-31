@@ -102,6 +102,34 @@ export default defineConfig({
       },
       testMatch: '**/api-*.spec.ts',
     },
+
+    /* Performance budget tests */
+    {
+      name: 'performance',
+      testMatch: '**/performance/**/*.spec.ts',
+      use: {
+        baseURL: process.env.API_BASE_URL || 'http://localhost:8000',
+      },
+    },
+
+    /* Accessibility tests */
+    {
+      name: 'accessibility',
+      testMatch: '**/accessibility/**/*.spec.ts',
+      use: {
+        baseURL: process.env.API_BASE_URL || 'http://localhost:8000',
+      },
+    },
+
+    /* Visual regression tests */
+    {
+      name: 'visual',
+      testMatch: '**/visual/**/*.spec.ts',
+      use: {
+        ...devices['Desktop Chrome'],
+      },
+      snapshotPathTemplate: '{testDir}/__snapshots__/{projectName}/{testFilePath}/{arg}{ext}',
+    },
   ],
 
   /* Output folder for test artifacts */
