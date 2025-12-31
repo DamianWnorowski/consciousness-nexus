@@ -3,12 +3,10 @@
 use crate::error::ConsciousnessError;
 use crate::models::*;
 use async_stream::stream;
-use futures::Stream;
+use futures::{Stream, StreamExt};
 use reqwest::{Client as HttpClient, RequestBuilder};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use tokio::sync::mpsc;
-use url::Url;
 
 /// Configuration for the Consciousness client
 #[derive(Debug, Clone)]
@@ -108,7 +106,7 @@ impl ConsciousnessClient {
     }
 
     /// Run evolution with streaming progress updates
-    pub async fn run_evolution_stream(
+    pub fn run_evolution_stream(
         &self,
         operation_type: EvolutionOperation,
         target_system: &str,
@@ -124,20 +122,27 @@ impl ConsciousnessClient {
             session_id: self.session_id.clone(),
         };
 
-        let response = match self.http_client
-            .post(&format!("{}/evolution/run/stream", self.config.base_url))
-            .json(&request)
-            .send()
-            .await
-        {
-            Ok(resp) => resp,
-            Err(e) => return stream! { yield Err(ConsciousnessError::Http(e)); },
-        };
-
-        let mut stream = response.bytes_stream();
+        // Clone values needed inside the stream to avoid borrowing self
+        let client = self.http_client.clone();
+        let base_url = self.config.base_url.clone();
 
         stream! {
-            while let Some(chunk_result) = stream.next().await {
+            let response = match client
+                .post(&format!("{}/evolution/run/stream", base_url))
+                .json(&request)
+                .send()
+                .await
+            {
+                Ok(resp) => resp,
+                Err(e) => {
+                    yield Err(ConsciousnessError::Http(e));
+                    return;
+                }
+            };
+
+            let mut byte_stream = response.bytes_stream();
+
+            while let Some(chunk_result) = byte_stream.next().await {
                 match chunk_result {
                     Ok(chunk) => {
                         let chunk_str = String::from_utf8_lossy(&chunk);
