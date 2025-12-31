@@ -20,6 +20,8 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
     "Topic :: Security",
     "Topic :: Software Development :: Libraries :: Python Modules",
@@ -52,6 +54,7 @@ dependencies = [
     "pyyaml>=6.0",
     "toml>=0.10.2",
     "orjson>=3.8.0",
+    "pydantic>=2.0.0",
 ]
 
 [project.optional-dependencies]
@@ -66,6 +69,8 @@ dev = [
     "flake8>=4.0.0",
     "mypy>=0.971",
     "httpx>=0.24.0",
+    "ruff>=0.1.0",
+    "safety>=2.3.0",
 ]
 gpu = [
     "torch>=1.12.0",
@@ -110,6 +115,17 @@ profile = "black"
 multi_line_output = 3
 line_length = 100
 
+[tool.ruff]
+line-length = 100
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["consciousness_suite"]
+
 [tool.mypy]
 python_version = "3.8"
 warn_return_any = true
@@ -149,6 +165,8 @@ markers = [
 filterwarnings = [
     "ignore::DeprecationWarning",
     "ignore::PendingDeprecationWarning",
+    "ignore:Pydantic V1:DeprecationWarning",
+    "ignore:.*pydantic.*:DeprecationWarning",
 ]
 
 [tool.coverage.run]

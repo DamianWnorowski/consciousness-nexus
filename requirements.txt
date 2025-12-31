@@ -44,12 +44,15 @@ pyyaml>=6.0
 toml>=0.10.2
 orjson>=3.8.0
 jsonschema>=4.17.0
+pydantic>=2.0.0
 
 # Development Tools
 black>=22.6.0
 isort>=5.10.0
 flake8>=4.0.0
 mypy>=0.971
+ruff>=0.1.0
+safety>=2.3.0
 
 # Optional: Quantum Computing (future)
 # qiskit>=0.39.0
