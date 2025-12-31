@@ -14,7 +14,7 @@
 import axios, { AxiosInstance } from 'axios';
 import WebSocket from 'ws';
 import EventEmitter from 'eventemitter3';
-import { v4 as uuidv4 } from 'uuid';
+// uuid available for future use if needed
 
 export interface ConsciousnessConfig {
   baseURL: string;

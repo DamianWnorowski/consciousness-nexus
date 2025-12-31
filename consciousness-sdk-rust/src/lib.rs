@@ -8,18 +8,18 @@
 //! - High-performance computing environments
 
 pub mod client;
-pub mod models;
 pub mod error;
+pub mod models;
 
 pub use client::ConsciousnessClient;
-pub use models::*;
 pub use error::ConsciousnessError;
+pub use models::*;
 
 /// Quick setup functions for common configurations
 pub mod prelude {
     pub use super::client::ConsciousnessClient;
-    pub use super::models::*;
     pub use super::error::ConsciousnessError;
+    pub use super::models::*;
 
     use super::client::ClientConfig;
 
