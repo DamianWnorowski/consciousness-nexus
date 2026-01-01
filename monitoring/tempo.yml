@@ -1,0 +1,100 @@
+# Grafana Tempo Configuration
+# ===========================
+# Distributed tracing backend for Consciousness Nexus
+
+server:
+  http_listen_port: 3200
+  grpc_listen_port: 9095
+
+# Distributor configuration
+distributor:
+  receivers:
+    otlp:
+      protocols:
+        grpc:
+          endpoint: 0.0.0.0:4317
+        http:
+          endpoint: 0.0.0.0:4318
+    jaeger:
+      protocols:
+        thrift_http:
+          endpoint: 0.0.0.0:14268
+        grpc:
+          endpoint: 0.0.0.0:14250
+    zipkin:
+      endpoint: 0.0.0.0:9411
+
+# Ingester configuration
+ingester:
+  max_block_duration: 5m
+  trace_idle_period: 10s
+  max_block_bytes: 1_000_000
+  complete_block_timeout: 15m
+
+# Compactor configuration
+compactor:
+  compaction:
+    block_retention: 48h
+    compacted_block_retention: 1h
+    compaction_window: 1h
+    max_block_bytes: 100_000_000
+    retention_concurrency: 10
+
+# Storage configuration
+storage:
+  trace:
+    backend: local
+    wal:
+      path: /tmp/tempo/wal
+    local:
+      path: /tmp/tempo/blocks
+    pool:
+      max_workers: 100
+      queue_depth: 10000
+
+# Query frontend configuration
+query_frontend:
+  search:
+    duration_slo: 5s
+    throughput_bytes_slo: 1.073741824e+09
+  trace_by_id:
+    duration_slo: 5s
+
+# Metrics generator for trace-derived metrics
+metrics_generator:
+  registry:
+    external_labels:
+      source: tempo
+      cluster: consciousness-nexus
+  storage:
+    path: /tmp/tempo/generator/wal
+    remote_write:
+      - url: http://prometheus:9090/api/v1/write
+        send_exemplars: true
+  traces_storage:
+    path: /tmp/tempo/generator/traces
+  processor:
+    service_graphs:
+      wait: 10s
+      max_items: 10000
+      workers: 10
+      dimensions:
+        - http.method
+        - http.status_code
+    span_metrics:
+      dimensions:
+        - http.method
+        - http.status_code
+        - service.name
+
+# Overrides configuration
+overrides:
+  defaults:
+    metrics_generator:
+      processors:
+        - service_graphs
+        - span_metrics
+
+# Usage report (disable for privacy)
+usage_report:
+  reporting_enabled: false

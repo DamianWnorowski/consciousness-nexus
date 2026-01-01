@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "timestamp": "2025-12-18T01:04:27.859519Z",
+    "timestamp": "2026-01-01T13:55:41.902610Z",
     "generator": "Consciousness Nexus SBOM Generator",
     "includeDev": false
   },
@@ -358,6 +358,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "asciitree",
+      "version": "0.3.3",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "asgiref",
       "version": "3.11.0",
       "source": "pip",
@@ -404,6 +415,17 @@
     {
       "name": "asyncio",
       "version": "4.0.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "asyncio-mqtt",
+      "version": "0.16.2",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -745,6 +767,17 @@
     {
       "name": "botocore",
       "version": "1.42.4",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "build",
+      "version": "1.3.0",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -1150,6 +1183,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "consciousness-suite",
+      "version": "2.0.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "contourpy",
       "version": "1.3.3",
       "source": "pip",
@@ -1238,6 +1282,39 @@
       "vulnerabilities": []
     },
     {
+      "name": "cuda-bindings",
+      "version": "13.1.1",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "cuda-pathfinder",
+      "version": "1.3.3",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "cuda-python",
+      "version": "13.1.1",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "cycler",
       "version": "0.12.1",
       "source": "pip",
@@ -1262,6 +1339,17 @@
     {
       "name": "cytoolz",
       "version": "1.1.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "dash",
+      "version": "3.3.0",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -1337,6 +1425,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "distinctipy",
+      "version": "1.3.4",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "distro",
       "version": "1.9.0",
       "source": "pip",
@@ -1403,6 +1502,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "dparse",
+      "version": "0.6.4",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "duckdb",
       "version": "1.4.2",
       "source": "pip",
@@ -1427,6 +1537,17 @@
     {
       "name": "einops",
       "version": "0.8.1",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "elephant",
+      "version": "1.0.0",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -1590,8 +1711,30 @@
       "vulnerabilities": []
     },
     {
+      "name": "faiss-cpu",
+      "version": "1.13.2",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "fastapi",
       "version": "0.121.3",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "fasteners",
+      "version": "0.20",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -1777,6 +1920,28 @@
       "vulnerabilities": []
     },
     {
+      "name": "gitdb",
+      "version": "4.0.12",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "GitPython",
+      "version": "3.1.45",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "google-ai-generativelanguage",
       "version": "0.6.15",
       "source": "pip",
@@ -1811,7 +1976,7 @@
     },
     {
       "name": "google-auth",
-      "version": "2.43.0",
+      "version": "2.41.1",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -1823,6 +1988,17 @@
     {
       "name": "google-auth-httplib2",
       "version": "0.2.1",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "google-auth-oauthlib",
+      "version": "1.2.3",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -2063,6 +2239,28 @@
       "vulnerabilities": []
     },
     {
+      "name": "h5py",
+      "version": "3.15.1",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "hdbscan",
+      "version": "0.8.41",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "hexbytes",
       "version": "1.3.1",
       "source": "pip",
@@ -2228,6 +2426,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "id",
+      "version": "1.5.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "idna",
       "version": "3.11",
       "source": "pip",
@@ -2362,6 +2571,17 @@
     {
       "name": "itsdangerous",
       "version": "2.2.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "jaraco.classes",
+      "version": "3.4.0",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -2558,6 +2778,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "keyring",
+      "version": "25.7.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "kiwisolver",
       "version": "1.4.9",
       "source": "pip",
@@ -2690,6 +2921,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "lazy-ops",
+      "version": "0.2.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "ldap3",
       "version": "2.9.1",
       "source": "pip",
@@ -2767,6 +3009,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "llvmlite",
+      "version": "0.46.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "loguru",
       "version": "0.7.3",
       "source": "pip",
@@ -2833,6 +3086,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "Markdown",
+      "version": "3.10",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "markdown-it-py",
       "version": "4.0.0",
       "source": "pip",
@@ -2846,6 +3110,17 @@
     {
       "name": "MarkupSafe",
       "version": "3.0.3",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "marshmallow",
+      "version": "4.1.2",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -2877,6 +3152,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "mccabe",
+      "version": "0.7.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "mcp",
       "version": "1.22.0",
       "source": "pip",
@@ -2888,8 +3174,41 @@
       "vulnerabilities": []
     },
     {
+      "name": "mcpo",
+      "version": "0.0.19",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "mdurl",
       "version": "0.1.2",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "MEArec",
+      "version": "1.9.2",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "MEAutility",
+      "version": "1.5.3",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -2945,6 +3264,17 @@
     {
       "name": "more-itertools",
       "version": "10.8.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "MouseInfo",
+      "version": "0.1.3",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -3042,8 +3372,41 @@
       "vulnerabilities": []
     },
     {
+      "name": "narwhals",
+      "version": "2.14.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "neo",
+      "version": "0.14.3",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "neo4j",
       "version": "5.14.1",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "nest-asyncio",
+      "version": "1.6.0",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -3086,6 +3449,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "nh3",
+      "version": "0.3.2",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "ninja",
       "version": "1.13.0",
       "source": "pip",
@@ -3097,8 +3471,41 @@
       "vulnerabilities": []
     },
     {
+      "name": "nltk",
+      "version": "3.9.2",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "noellekey",
       "version": "2.0.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "numba",
+      "version": "0.63.1",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "numcodecs",
+      "version": "0.15.1",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -3306,6 +3713,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "paho-mqtt",
+      "version": "2.1.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "pandas",
       "version": "2.3.3",
       "source": "pip",
@@ -3341,6 +3759,17 @@
     {
       "name": "parso",
       "version": "0.8.5",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "passlib",
+      "version": "1.7.4",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -3482,6 +3911,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "plotly",
+      "version": "6.5.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "pluggy",
       "version": "1.6.0",
       "source": "pip",
@@ -3550,6 +3990,17 @@
     {
       "name": "prettytable",
       "version": "3.17.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "probeinterface",
+      "version": "0.3.1",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -3724,6 +4175,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "PyAutoGUI",
+      "version": "0.9.54",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "pybreaker",
       "version": "1.4.1",
       "source": "pip",
@@ -3748,6 +4210,17 @@
     {
       "name": "pycares",
       "version": "4.11.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "pycodestyle",
+      "version": "2.14.0",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -3867,6 +4340,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "pyEDFlib",
+      "version": "0.1.42",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "pyee",
       "version": "13.0.0",
       "source": "pip",
@@ -3880,6 +4364,28 @@
     {
       "name": "pyelftools",
       "version": "0.32",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "pyflakes",
+      "version": "3.4.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "PyGetWindow",
+      "version": "0.0.9",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -3955,8 +4461,30 @@
       "vulnerabilities": []
     },
     {
+      "name": "PyMsgBox",
+      "version": "2.0.1",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "PyNaCl",
       "version": "1.6.1",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "pynndescent",
+      "version": "0.5.13",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -4043,8 +4571,41 @@
       "vulnerabilities": []
     },
     {
+      "name": "pyproject_hooks",
+      "version": "1.2.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "pyreadline3",
       "version": "3.5.4",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "PyRect",
+      "version": "0.2.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "PyScreeze",
+      "version": "1.0.1",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -4197,6 +4758,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "pytweening",
+      "version": "1.2.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "pytz",
       "version": "2025.2",
       "source": "pip",
@@ -4241,6 +4813,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "pywin32-ctypes",
+      "version": "0.2.3",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "pywinauto",
       "version": "0.6.9",
       "source": "pip",
@@ -4265,6 +4848,28 @@
     {
       "name": "qdrant-client",
       "version": "1.16.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "quantities",
+      "version": "0.16.2",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "readme_renderer",
+      "version": "44.0",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -4395,6 +5000,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "rfc3986",
+      "version": "2.0.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "rfc5424-logging-handler",
       "version": "1.4.3",
       "source": "pip",
@@ -4494,6 +5110,39 @@
       "vulnerabilities": []
     },
     {
+      "name": "ruamel.yaml",
+      "version": "0.19.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "ruamel.yaml.clibz",
+      "version": "0.3.3",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "ruff",
+      "version": "0.14.10",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "s3transfer",
       "version": "0.16.0",
       "source": "pip",
@@ -4516,6 +5165,28 @@
       "vulnerabilities": []
     },
     {
+      "name": "safety",
+      "version": "3.7.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "safety-schemas",
+      "version": "0.0.16",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "scikit-learn",
       "version": "1.7.2",
       "source": "pip",
@@ -4529,6 +5200,17 @@
     {
       "name": "scipy",
       "version": "1.16.3",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "seaborn",
+      "version": "0.13.2",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -4681,6 +5363,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "skops",
+      "version": "0.13.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "slither-analyzer",
       "version": "0.11.3",
       "source": "pip",
@@ -4694,6 +5387,17 @@
     {
       "name": "slowapi",
       "version": "0.1.9",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "smmap",
+      "version": "5.0.2",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -4903,6 +5607,17 @@
     {
       "name": "sphinxcontrib-serializinghtml",
       "version": "2.0.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "spikeinterface",
+      "version": "0.103.2",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -5286,8 +6001,30 @@
       "vulnerabilities": []
     },
     {
+      "name": "toml",
+      "version": "0.10.2",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "tomli",
       "version": "2.2.1",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "tomlkit",
+      "version": "0.13.3",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -5429,6 +6166,17 @@
       "vulnerabilities": []
     },
     {
+      "name": "twine",
+      "version": "6.2.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
       "name": "typer",
       "version": "0.20.0",
       "source": "pip",
@@ -5508,6 +6256,17 @@
     {
       "name": "ujson",
       "version": "5.11.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "umap-learn",
+      "version": "0.5.9.post2",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",
@@ -5805,6 +6564,17 @@
     {
       "name": "yarl",
       "version": "1.22.0",
+      "source": "pip",
+      "type": "runtime",
+      "license": "Unknown",
+      "description": "",
+      "homepage": "",
+      "dependencies": [],
+      "vulnerabilities": []
+    },
+    {
+      "name": "zarr",
+      "version": "2.18.7",
       "source": "pip",
       "type": "runtime",
       "license": "Unknown",

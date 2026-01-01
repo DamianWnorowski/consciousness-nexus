@@ -1,0 +1,138 @@
+# Prometheus Alert Rules - Consciousness API
+# ===========================================
+
+groups:
+  - name: consciousness_api_alerts
+    interval: 30s
+    rules:
+      # Service availability
+      - alert: ConsciousnessAPIDown
+        expr: up{job="consciousness-api"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: consciousness-api
+          category: availability
+        annotations:
+          summary: "Consciousness API is down"
+          description: "Consciousness API has been unreachable for more than 1 minute"
+          runbook_url: "https://docs.consciousness-nexus.io/runbooks/api-down"
+
+      # High error rate
+      - alert: HighErrorRate
+        expr: |
+          sum(rate(consciousness_nexus_http_requests_total{status=~"5.."}[5m]))
+          /
+          sum(rate(consciousness_nexus_http_requests_total[5m]))
+          > 0.05
+        for: 5m
+        labels:
+          severity: high
+          service: consciousness-api
+          category: errors
+        annotations:
+          summary: "High error rate detected"
+          description: "Error rate is {{ $value | humanizePercentage }} (threshold: 5%)"
+
+      # High latency
+      - alert: HighLatencyP99
+        expr: |
+          histogram_quantile(0.99,
+            sum(rate(consciousness_nexus_http_request_duration_seconds_bucket[5m])) by (le)
+          ) > 5
+        for: 5m
+        labels:
+          severity: high
+          service: consciousness-api
+          category: latency
+        annotations:
+          summary: "High P99 latency"
+          description: "P99 latency is {{ $value | humanizeDuration }} (threshold: 5s)"
+
+      # High latency P95
+      - alert: HighLatencyP95
+        expr: |
+          histogram_quantile(0.95,
+            sum(rate(consciousness_nexus_http_request_duration_seconds_bucket[5m])) by (le)
+          ) > 2
+        for: 5m
+        labels:
+          severity: warning
+          service: consciousness-api
+          category: latency
+        annotations:
+          summary: "Elevated P95 latency"
+          description: "P95 latency is {{ $value | humanizeDuration }} (threshold: 2s)"
+
+      # Request spike
+      - alert: RequestSpike
+        expr: |
+          sum(rate(consciousness_nexus_http_requests_total[5m]))
+          >
+          2 * sum(rate(consciousness_nexus_http_requests_total[1h] offset 5m))
+        for: 10m
+        labels:
+          severity: warning
+          service: consciousness-api
+          category: traffic
+        annotations:
+          summary: "Unusual request spike detected"
+          description: "Request rate is more than 2x the hourly average"
+
+      # Connection pool exhaustion
+      - alert: ConnectionPoolExhaustion
+        expr: consciousness_connection_pool_size >= 95
+        for: 5m
+        labels:
+          severity: high
+          service: consciousness-api
+          category: resources
+        annotations:
+          summary: "Connection pool near exhaustion"
+          description: "Connection pool is {{ $value }}% full"
+
+  - name: consciousness_processing_alerts
+    interval: 30s
+    rules:
+      # Processing errors
+      - alert: HighProcessingErrorRate
+        expr: |
+          sum(rate(consciousness_processing_errors_total[5m]))
+          /
+          sum(rate(consciousness_processing_success_total[5m]) + rate(consciousness_processing_errors_total[5m]))
+          > 0.1
+        for: 5m
+        labels:
+          severity: high
+          service: consciousness-api
+          category: processing
+        annotations:
+          summary: "High processing error rate"
+          description: "Processing error rate is {{ $value | humanizePercentage }}"
+
+      # Queue backlog
+      - alert: ProcessingQueueBacklog
+        expr: consciousness_thought_queue_size > 1000
+        for: 10m
+        labels:
+          severity: warning
+          service: consciousness-api
+          category: processing
+        annotations:
+          summary: "Processing queue backlog"
+          description: "Queue has {{ $value }} pending items"
+
+      # Slow processing
+      - alert: SlowProcessing
+        expr: |
+          histogram_quantile(0.95,
+            sum(rate(consciousness_processing_duration_seconds_bucket[5m])) by (le, operation)
+          ) > 30
+        for: 10m
+        labels:
+          severity: warning
+          service: consciousness-api
+          category: processing
+        annotations:
+          summary: "Slow processing detected"
+          description: "P95 processing time for {{ $labels.operation }} is {{ $value | humanizeDuration }}"

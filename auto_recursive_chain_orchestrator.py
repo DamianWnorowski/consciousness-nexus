@@ -83,7 +83,7 @@ class AutoRecursiveChainOrchestrator:
 
     async def analyze_system_state(self):
         """Analyze current system state and fitness"""
-        self.logger.info("🔍 Analyzing system state...")
+        self.logger.info("PROCESS: Analyzing system state...")
 
         try:
             # Check if GUI is running
@@ -122,7 +122,6 @@ class AutoRecursiveChainOrchestrator:
                 "timestamp": datetime.now().isoformat()
             })
 
-            self.logger.info(".3f")
             return fitness_score
 
         except Exception as e:
@@ -165,8 +164,6 @@ class AutoRecursiveChainOrchestrator:
     def select_next_command(self, fitness_score):
         """Intelligently select next command based on system state"""
 
-        self.logger.info(".3f")
-
         # Command selection logic based on fitness levels
         if fitness_score < 0.5:
             # Critical state - focus on diagnostics and fixes
@@ -200,7 +197,7 @@ class AutoRecursiveChainOrchestrator:
         # Select command based on learned patterns and current state
         selected_command = self._choose_optimal_command(commands, fitness_score)
 
-        self.logger.info(f"🎯 Selected command: {selected_command[0]} - {selected_command[2]}")
+        self.logger.info(f"TARGET: Selected command: {selected_command[0]} - {selected_command[2]}")
         return selected_command
 
     def _choose_optimal_command(self, commands, fitness_score):
@@ -228,7 +225,7 @@ class AutoRecursiveChainOrchestrator:
 
     async def execute_command(self, command, params, description):
         """Execute a command and track results"""
-        self.logger.info(f"⚡ Executing: {command} {params} - {description}")
+        self.logger.info(f"PROCESS: Executing: {command} {params} - {description}")
 
         execution_id = f"exec_{int(time.time() * 1000)}"
         start_time = time.time()
@@ -270,7 +267,7 @@ class AutoRecursiveChainOrchestrator:
             self._learn_from_execution(command, result.get("success", False))
 
             success = result.get("success", False)
-            self.logger.info(f"✅ Command completed: {'SUCCESS' if success else 'FAILED'} ({execution_time:.2f}s)")
+            self.logger.info(f"SUCCESS: Command completed: {'SUCCESS' if success else 'FAILED'} ({execution_time:.2f}s)")
 
             return success
 
@@ -308,7 +305,7 @@ class AutoRecursiveChainOrchestrator:
 
     async def _execute_e2e_playwright(self, profile):
         """Execute E2E Playwright tests"""
-        self.logger.info(f"🎭 Running E2E Playwright tests (profile: {profile})")
+        self.logger.info(f"PROCESS: Running E2E Playwright tests (profile: {profile})")
 
         try:
             # Run the demo E2E testing
@@ -320,7 +317,7 @@ class AutoRecursiveChainOrchestrator:
                 "success": result.returncode == 0,
                 "profile": profile,
                 "output": result.stdout[-500:] if len(result.stdout) > 500 else result.stdout,
-                "tests_passed": "✅" in result.stdout
+                "tests_passed": "SUCCESS" in result.stdout
             }
         except subprocess.TimeoutExpired:
             return {"success": False, "error": "E2E tests timed out"}
@@ -329,7 +326,7 @@ class AutoRecursiveChainOrchestrator:
 
     async def _execute_auto_design(self, analysis_type):
         """Execute auto-design analysis"""
-        self.logger.info(f"🎨 Running auto-design analysis ({analysis_type})")
+        self.logger.info(f"PROCESS: Running auto-design analysis ({analysis_type})")
 
         try:
             # Run demo consciousness suite to simulate analysis
@@ -354,7 +351,7 @@ class AutoRecursiveChainOrchestrator:
 
     async def _execute_ultra_critic(self, target):
         """Execute ultra-critic analysis"""
-        self.logger.info(f"🔍 Running ultra-critic on {target}")
+        self.logger.info(f"PROCESS: Running ultra-critic on {target}")
 
         try:
             result = subprocess.run([
@@ -375,7 +372,7 @@ class AutoRecursiveChainOrchestrator:
 
     async def _execute_sbom(self, action):
         """Execute SBOM generation"""
-        self.logger.info(f"📦 Generating SBOM ({action})")
+        self.logger.info(f"PROCESS: Generating SBOM ({action})")
 
         try:
             result = subprocess.run([
@@ -396,7 +393,7 @@ class AutoRecursiveChainOrchestrator:
 
     async def _execute_abyssal(self, template_type):
         """Execute ABYSSAL template"""
-        self.logger.info(f"🧠 Executing ABYSSAL template ({template_type})")
+        self.logger.info(f"PROCESS: Executing ABYSSAL template ({template_type})")
 
         try:
             result = subprocess.run([
@@ -419,23 +416,22 @@ class AutoRecursiveChainOrchestrator:
 
         # Max iterations reached
         if self.current_iteration >= self.max_iterations:
-            self.logger.info(f"🛑 Max iterations ({self.max_iterations}) reached")
+            self.logger.info(f"STOP: Max iterations ({self.max_iterations}) reached")
             return True
 
         # Fitness threshold achieved with consecutive improvements
         if (fitness_score >= self.fitness_threshold and
             self.consecutive_improvements >= 3):
-            self.logger.info(".3f")
             return True
 
         # Too many consecutive degradations
         if self.consecutive_degradations >= self.max_consecutive_degradations:
-            self.logger.info(f"🛑 Too many consecutive degradations ({self.consecutive_degradations})")
+            self.logger.info(f"STOP: Too many consecutive degradations ({self.consecutive_degradations})")
             return True
 
         # Graceful shutdown requested
         if not self.running:
-            self.logger.info("🛑 Graceful shutdown requested")
+            self.logger.info("STOP: Graceful shutdown requested")
             return True
 
         return False
@@ -458,7 +454,7 @@ class AutoRecursiveChainOrchestrator:
 
     async def run_complete_cycle(self):
         """Run a complete cycle of analysis, command selection, and execution"""
-        self.logger.info(f"🔄 Starting cycle {self.cycles_completed + 1}")
+        self.logger.info(f"PROCESS: Starting cycle {self.cycles_completed + 1}")
 
         # Step 1: Analyze system state
         fitness_score = await self.analyze_system_state()
@@ -477,7 +473,7 @@ class AutoRecursiveChainOrchestrator:
             "timestamp": datetime.now().isoformat()
         }
 
-        self.logger.info(f"✅ Cycle {self.cycles_completed + 1} completed - Fitness: {fitness_score:.3f}, Command: {command} ({'SUCCESS' if success else 'FAILED'})")
+        self.logger.info(f"SUCCESS: Cycle {self.cycles_completed + 1} completed - Fitness: {fitness_score:.3f}, Command: {command}")
 
         self.cycles_completed += 1
 
@@ -489,7 +485,7 @@ class AutoRecursiveChainOrchestrator:
 
     async def run_orchestration(self):
         """Run the main orchestration loop"""
-        self.logger.info("🚀 Starting Auto-Recursive Chain AI Orchestrator")
+        self.logger.info("START: Auto-Recursive Chain AI Orchestrator")
         self.logger.info(f"Configuration: max_iterations={self.max_iterations}, fitness_threshold={self.fitness_threshold}, cycles_only={self.cycles_only}")
 
         try:
@@ -506,7 +502,7 @@ class AutoRecursiveChainOrchestrator:
                     # Small delay between iterations
                     await asyncio.sleep(2)
 
-            self.logger.info("🏁 Orchestration completed")
+            self.logger.info("DONE: Orchestration completed")
 
         except Exception as e:
             self.logger.error(f"💥 Orchestration failed: {e}")
@@ -531,7 +527,7 @@ class AutoRecursiveChainOrchestrator:
         try:
             with open(self.state_file, 'w') as f:
                 json.dump(state, f, indent=2)
-            self.logger.info(f"💾 State saved to {self.state_file}")
+            self.logger.info(f"DATA: State saved to {self.state_file}")
         except Exception as e:
             self.logger.error(f"Failed to save state: {e}")
 
@@ -564,7 +560,7 @@ class AutoRecursiveChainOrchestrator:
         try:
             with open(report_file, 'w') as f:
                 json.dump(report, f, indent=2, default=str)
-            self.logger.info(f"📊 Final report saved to {report_file}")
+            self.logger.info(f"DATA: Final report saved to {report_file}")
         except Exception as e:
             self.logger.error(f"Failed to save final report: {e}")
 
@@ -635,29 +631,27 @@ class AutoRecursiveChainOrchestrator:
     def _print_final_summary(self, report):
         """Print final orchestration summary"""
         print("\n" + "="*80)
-        print("🎉 AUTO-RECURSIVE CHAIN AI ORCHESTRATION COMPLETE")
+        print("AUTO-RECURSIVE CHAIN AI ORCHESTRATION COMPLETE")
         print("="*80)
 
         summary = report["orchestration_summary"]
         metrics = report["performance_metrics"]
         stats = report["command_statistics"]
 
-        print(f"📊 Total Iterations: {summary['total_iterations']}")
-        print(f"🔄 Cycles Completed: {summary['cycles_completed']}")
-        print(".2f")
-        print(".3f")
-        print(f"⚡ Commands Executed: {summary['commands_executed']}")
-        print(f"🧠 Patterns Learned: {summary['learned_patterns']}")
+        print(f"Total Iterations: {summary['total_iterations']}")
+        print(f"Cycles Completed: {summary['cycles_completed']}")
+        print(f"Commands Executed: {summary['commands_executed']}")
+        print(f"Patterns Learned: {summary['learned_patterns']}")
 
-        print("\n🎯 COMMAND STATISTICS:")
+        print("\nCOMMAND STATISTICS:")
         for cmd_name, data in stats.items():
             success_rate = data['success_rate'] * 100
-            print(".1f")
-        print("\n🏆 FINAL RECOMMENDATIONS:")
+            print(f"--- {cmd_name}: {success_rate:.1f}% success")
+        print("\nFINAL RECOMMENDATIONS:")
         for rec in report["recommendations"]:
-            print(f"   • {rec}")
+            print(f"   * {rec}")
 
-        print(f"\n🏁 Completion Reason: {report['completion_reason'].replace('_', ' ').title()}")
+        print(f"\nCompletion Reason: {report['completion_reason'].replace('_', ' ').title()}")
         print("="*80)
 
 

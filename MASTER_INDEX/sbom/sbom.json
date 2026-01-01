@@ -4,7 +4,7 @@
     "format": "Consciousness-Nexus-SBOM",
     "specVersion": "1.4",
     "creationInfo": {
-      "created": "2025-12-18T01:04:27.859519Z",
+      "created": "2026-01-01T13:55:41.902610Z",
       "creators": [
         "Tool: Consciousness Nexus SBOM Generator v1.0"
       ]
@@ -525,6 +525,22 @@
     },
     {
       "type": "library",
+      "name": "asciitree",
+      "version": "0.3.3",
+      "purl": "pkg:pypi/asciitree@0.3.3",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "asgiref",
       "version": "3.11.0",
       "purl": "pkg:pypi/asgiref@3.11.0",
@@ -592,6 +608,22 @@
       "name": "asyncio",
       "version": "4.0.0",
       "purl": "pkg:pypi/asyncio@4.0.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "asyncio-mqtt",
+      "version": "0.16.2",
+      "purl": "pkg:pypi/asyncio-mqtt@0.16.2",
       "properties": [
         {
           "name": "source",
@@ -1088,6 +1120,22 @@
       "name": "botocore",
       "version": "1.42.4",
       "purl": "pkg:pypi/botocore@1.42.4",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "build",
+      "version": "1.3.0",
+      "purl": "pkg:pypi/build@1.3.0",
       "properties": [
         {
           "name": "source",
@@ -1677,6 +1725,22 @@
     },
     {
       "type": "library",
+      "name": "consciousness-suite",
+      "version": "2.0.0",
+      "purl": "pkg:pypi/consciousness-suite@2.0.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "contourpy",
       "version": "1.3.3",
       "purl": "pkg:pypi/contourpy@1.3.3",
@@ -1805,6 +1869,54 @@
     },
     {
       "type": "library",
+      "name": "cuda-bindings",
+      "version": "13.1.1",
+      "purl": "pkg:pypi/cuda-bindings@13.1.1",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "cuda-pathfinder",
+      "version": "1.3.3",
+      "purl": "pkg:pypi/cuda-pathfinder@1.3.3",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "cuda-python",
+      "version": "13.1.1",
+      "purl": "pkg:pypi/cuda-python@13.1.1",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "cycler",
       "version": "0.12.1",
       "purl": "pkg:pypi/cycler@0.12.1",
@@ -1840,6 +1952,22 @@
       "name": "cytoolz",
       "version": "1.1.0",
       "purl": "pkg:pypi/cytoolz@1.1.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "dash",
+      "version": "3.3.0",
+      "purl": "pkg:pypi/dash@3.3.0",
       "properties": [
         {
           "name": "source",
@@ -1949,6 +2077,22 @@
     },
     {
       "type": "library",
+      "name": "distinctipy",
+      "version": "1.3.4",
+      "purl": "pkg:pypi/distinctipy@1.3.4",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "distro",
       "version": "1.9.0",
       "purl": "pkg:pypi/distro@1.9.0",
@@ -2045,6 +2189,22 @@
     },
     {
       "type": "library",
+      "name": "dparse",
+      "version": "0.6.4",
+      "purl": "pkg:pypi/dparse@0.6.4",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "duckdb",
       "version": "1.4.2",
       "purl": "pkg:pypi/duckdb@1.4.2",
@@ -2080,6 +2240,22 @@
       "name": "einops",
       "version": "0.8.1",
       "purl": "pkg:pypi/einops@0.8.1",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "elephant",
+      "version": "1.0.0",
+      "purl": "pkg:pypi/elephant@1.0.0",
       "properties": [
         {
           "name": "source",
@@ -2317,9 +2493,41 @@
     },
     {
       "type": "library",
+      "name": "faiss-cpu",
+      "version": "1.13.2",
+      "purl": "pkg:pypi/faiss-cpu@1.13.2",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "fastapi",
       "version": "0.121.3",
       "purl": "pkg:pypi/fastapi@0.121.3",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "fasteners",
+      "version": "0.20",
+      "purl": "pkg:pypi/fasteners@0.20",
       "properties": [
         {
           "name": "source",
@@ -2589,6 +2797,38 @@
     },
     {
       "type": "library",
+      "name": "gitdb",
+      "version": "4.0.12",
+      "purl": "pkg:pypi/gitdb@4.0.12",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "GitPython",
+      "version": "3.1.45",
+      "purl": "pkg:pypi/GitPython@3.1.45",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "google-ai-generativelanguage",
       "version": "0.6.15",
       "purl": "pkg:pypi/google-ai-generativelanguage@0.6.15",
@@ -2638,8 +2878,8 @@
     {
       "type": "library",
       "name": "google-auth",
-      "version": "2.43.0",
-      "purl": "pkg:pypi/google-auth@2.43.0",
+      "version": "2.41.1",
+      "purl": "pkg:pypi/google-auth@2.41.1",
       "properties": [
         {
           "name": "source",
@@ -2656,6 +2896,22 @@
       "name": "google-auth-httplib2",
       "version": "0.2.1",
       "purl": "pkg:pypi/google-auth-httplib2@0.2.1",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "google-auth-oauthlib",
+      "version": "1.2.3",
+      "purl": "pkg:pypi/google-auth-oauthlib@1.2.3",
       "properties": [
         {
           "name": "source",
@@ -3005,6 +3261,38 @@
     },
     {
       "type": "library",
+      "name": "h5py",
+      "version": "3.15.1",
+      "purl": "pkg:pypi/h5py@3.15.1",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "hdbscan",
+      "version": "0.8.41",
+      "purl": "pkg:pypi/hdbscan@0.8.41",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "hexbytes",
       "version": "1.3.1",
       "purl": "pkg:pypi/hexbytes@1.3.1",
@@ -3245,6 +3533,22 @@
     },
     {
       "type": "library",
+      "name": "id",
+      "version": "1.5.0",
+      "purl": "pkg:pypi/id@1.5.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "idna",
       "version": "3.11",
       "purl": "pkg:pypi/idna@3.11",
@@ -3440,6 +3744,22 @@
       "name": "itsdangerous",
       "version": "2.2.0",
       "purl": "pkg:pypi/itsdangerous@2.2.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "jaraco.classes",
+      "version": "3.4.0",
+      "purl": "pkg:pypi/jaraco.classes@3.4.0",
       "properties": [
         {
           "name": "source",
@@ -3725,6 +4045,22 @@
     },
     {
       "type": "library",
+      "name": "keyring",
+      "version": "25.7.0",
+      "purl": "pkg:pypi/keyring@25.7.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "kiwisolver",
       "version": "1.4.9",
       "purl": "pkg:pypi/kiwisolver@1.4.9",
@@ -3917,6 +4253,22 @@
     },
     {
       "type": "library",
+      "name": "lazy-ops",
+      "version": "0.2.0",
+      "purl": "pkg:pypi/lazy-ops@0.2.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "ldap3",
       "version": "2.9.1",
       "purl": "pkg:pypi/ldap3@2.9.1",
@@ -4029,6 +4381,22 @@
     },
     {
       "type": "library",
+      "name": "llvmlite",
+      "version": "0.46.0",
+      "purl": "pkg:pypi/llvmlite@0.46.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "loguru",
       "version": "0.7.3",
       "purl": "pkg:pypi/loguru@0.7.3",
@@ -4125,6 +4493,22 @@
     },
     {
       "type": "library",
+      "name": "Markdown",
+      "version": "3.10",
+      "purl": "pkg:pypi/Markdown@3.10",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "markdown-it-py",
       "version": "4.0.0",
       "purl": "pkg:pypi/markdown-it-py@4.0.0",
@@ -4144,6 +4528,22 @@
       "name": "MarkupSafe",
       "version": "3.0.3",
       "purl": "pkg:pypi/MarkupSafe@3.0.3",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "marshmallow",
+      "version": "4.1.2",
+      "purl": "pkg:pypi/marshmallow@4.1.2",
       "properties": [
         {
           "name": "source",
@@ -4189,6 +4589,22 @@
     },
     {
       "type": "library",
+      "name": "mccabe",
+      "version": "0.7.0",
+      "purl": "pkg:pypi/mccabe@0.7.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "mcp",
       "version": "1.22.0",
       "purl": "pkg:pypi/mcp@1.22.0",
@@ -4205,9 +4621,57 @@
     },
     {
       "type": "library",
+      "name": "mcpo",
+      "version": "0.0.19",
+      "purl": "pkg:pypi/mcpo@0.0.19",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "mdurl",
       "version": "0.1.2",
       "purl": "pkg:pypi/mdurl@0.1.2",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "MEArec",
+      "version": "1.9.2",
+      "purl": "pkg:pypi/MEArec@1.9.2",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "MEAutility",
+      "version": "1.5.3",
+      "purl": "pkg:pypi/MEAutility@1.5.3",
       "properties": [
         {
           "name": "source",
@@ -4288,6 +4752,22 @@
       "name": "more-itertools",
       "version": "10.8.0",
       "purl": "pkg:pypi/more-itertools@10.8.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "MouseInfo",
+      "version": "0.1.3",
+      "purl": "pkg:pypi/MouseInfo@0.1.3",
       "properties": [
         {
           "name": "source",
@@ -4429,9 +4909,57 @@
     },
     {
       "type": "library",
+      "name": "narwhals",
+      "version": "2.14.0",
+      "purl": "pkg:pypi/narwhals@2.14.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "neo",
+      "version": "0.14.3",
+      "purl": "pkg:pypi/neo@0.14.3",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "neo4j",
       "version": "5.14.1",
       "purl": "pkg:pypi/neo4j@5.14.1",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "nest-asyncio",
+      "version": "1.6.0",
+      "purl": "pkg:pypi/nest-asyncio@1.6.0",
       "properties": [
         {
           "name": "source",
@@ -4493,6 +5021,22 @@
     },
     {
       "type": "library",
+      "name": "nh3",
+      "version": "0.3.2",
+      "purl": "pkg:pypi/nh3@0.3.2",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "ninja",
       "version": "1.13.0",
       "purl": "pkg:pypi/ninja@1.13.0",
@@ -4509,9 +5053,57 @@
     },
     {
       "type": "library",
+      "name": "nltk",
+      "version": "3.9.2",
+      "purl": "pkg:pypi/nltk@3.9.2",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "noellekey",
       "version": "2.0.0",
       "purl": "pkg:pypi/noellekey@2.0.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "numba",
+      "version": "0.63.1",
+      "purl": "pkg:pypi/numba@0.63.1",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "numcodecs",
+      "version": "0.15.1",
+      "purl": "pkg:pypi/numcodecs@0.15.1",
       "properties": [
         {
           "name": "source",
@@ -4813,6 +5405,22 @@
     },
     {
       "type": "library",
+      "name": "paho-mqtt",
+      "version": "2.1.0",
+      "purl": "pkg:pypi/paho-mqtt@2.1.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "pandas",
       "version": "2.3.3",
       "purl": "pkg:pypi/pandas@2.3.3",
@@ -4864,6 +5472,22 @@
       "name": "parso",
       "version": "0.8.5",
       "purl": "pkg:pypi/parso@0.8.5",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "passlib",
+      "version": "1.7.4",
+      "purl": "pkg:pypi/passlib@1.7.4",
       "properties": [
         {
           "name": "source",
@@ -5069,6 +5693,22 @@
     },
     {
       "type": "library",
+      "name": "plotly",
+      "version": "6.5.0",
+      "purl": "pkg:pypi/plotly@6.5.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "pluggy",
       "version": "1.6.0",
       "purl": "pkg:pypi/pluggy@1.6.0",
@@ -5168,6 +5808,22 @@
       "name": "prettytable",
       "version": "3.17.0",
       "purl": "pkg:pypi/prettytable@3.17.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "probeinterface",
+      "version": "0.3.1",
+      "purl": "pkg:pypi/probeinterface@0.3.1",
       "properties": [
         {
           "name": "source",
@@ -5421,6 +6077,22 @@
     },
     {
       "type": "library",
+      "name": "PyAutoGUI",
+      "version": "0.9.54",
+      "purl": "pkg:pypi/PyAutoGUI@0.9.54",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "pybreaker",
       "version": "1.4.1",
       "purl": "pkg:pypi/pybreaker@1.4.1",
@@ -5456,6 +6128,22 @@
       "name": "pycares",
       "version": "4.11.0",
       "purl": "pkg:pypi/pycares@4.11.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "pycodestyle",
+      "version": "2.14.0",
+      "purl": "pkg:pypi/pycodestyle@2.14.0",
       "properties": [
         {
           "name": "source",
@@ -5629,6 +6317,22 @@
     },
     {
       "type": "library",
+      "name": "pyEDFlib",
+      "version": "0.1.42",
+      "purl": "pkg:pypi/pyEDFlib@0.1.42",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "pyee",
       "version": "13.0.0",
       "purl": "pkg:pypi/pyee@13.0.0",
@@ -5648,6 +6352,38 @@
       "name": "pyelftools",
       "version": "0.32",
       "purl": "pkg:pypi/pyelftools@0.32",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "pyflakes",
+      "version": "3.4.0",
+      "purl": "pkg:pypi/pyflakes@3.4.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "PyGetWindow",
+      "version": "0.0.9",
+      "purl": "pkg:pypi/PyGetWindow@0.0.9",
       "properties": [
         {
           "name": "source",
@@ -5757,9 +6493,41 @@
     },
     {
       "type": "library",
+      "name": "PyMsgBox",
+      "version": "2.0.1",
+      "purl": "pkg:pypi/PyMsgBox@2.0.1",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "PyNaCl",
       "version": "1.6.1",
       "purl": "pkg:pypi/PyNaCl@1.6.1",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "pynndescent",
+      "version": "0.5.13",
+      "purl": "pkg:pypi/pynndescent@0.5.13",
       "properties": [
         {
           "name": "source",
@@ -5885,9 +6653,57 @@
     },
     {
       "type": "library",
+      "name": "pyproject_hooks",
+      "version": "1.2.0",
+      "purl": "pkg:pypi/pyproject_hooks@1.2.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "pyreadline3",
       "version": "3.5.4",
       "purl": "pkg:pypi/pyreadline3@3.5.4",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "PyRect",
+      "version": "0.2.0",
+      "purl": "pkg:pypi/PyRect@0.2.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "PyScreeze",
+      "version": "1.0.1",
+      "purl": "pkg:pypi/PyScreeze@1.0.1",
       "properties": [
         {
           "name": "source",
@@ -6109,6 +6925,22 @@
     },
     {
       "type": "library",
+      "name": "pytweening",
+      "version": "1.2.0",
+      "purl": "pkg:pypi/pytweening@1.2.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "pytz",
       "version": "2025.2",
       "purl": "pkg:pypi/pytz@2025.2",
@@ -6173,6 +7005,22 @@
     },
     {
       "type": "library",
+      "name": "pywin32-ctypes",
+      "version": "0.2.3",
+      "purl": "pkg:pypi/pywin32-ctypes@0.2.3",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "pywinauto",
       "version": "0.6.9",
       "purl": "pkg:pypi/pywinauto@0.6.9",
@@ -6208,6 +7056,38 @@
       "name": "qdrant-client",
       "version": "1.16.0",
       "purl": "pkg:pypi/qdrant-client@1.16.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "quantities",
+      "version": "0.16.2",
+      "purl": "pkg:pypi/quantities@0.16.2",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "readme_renderer",
+      "version": "44.0",
+      "purl": "pkg:pypi/readme_renderer@44.0",
       "properties": [
         {
           "name": "source",
@@ -6397,6 +7277,22 @@
     },
     {
       "type": "library",
+      "name": "rfc3986",
+      "version": "2.0.0",
+      "purl": "pkg:pypi/rfc3986@2.0.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "rfc5424-logging-handler",
       "version": "1.4.3",
       "purl": "pkg:pypi/rfc5424-logging-handler@1.4.3",
@@ -6541,6 +7437,54 @@
     },
     {
       "type": "library",
+      "name": "ruamel.yaml",
+      "version": "0.19.0",
+      "purl": "pkg:pypi/ruamel.yaml@0.19.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ruamel.yaml.clibz",
+      "version": "0.3.3",
+      "purl": "pkg:pypi/ruamel.yaml.clibz@0.3.3",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "ruff",
+      "version": "0.14.10",
+      "purl": "pkg:pypi/ruff@0.14.10",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "s3transfer",
       "version": "0.16.0",
       "purl": "pkg:pypi/s3transfer@0.16.0",
@@ -6573,6 +7517,38 @@
     },
     {
       "type": "library",
+      "name": "safety",
+      "version": "3.7.0",
+      "purl": "pkg:pypi/safety@3.7.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "safety-schemas",
+      "version": "0.0.16",
+      "purl": "pkg:pypi/safety-schemas@0.0.16",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "scikit-learn",
       "version": "1.7.2",
       "purl": "pkg:pypi/scikit-learn@1.7.2",
@@ -6592,6 +7568,22 @@
       "name": "scipy",
       "version": "1.16.3",
       "purl": "pkg:pypi/scipy@1.16.3",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "seaborn",
+      "version": "0.13.2",
+      "purl": "pkg:pypi/seaborn@0.13.2",
       "properties": [
         {
           "name": "source",
@@ -6813,6 +7805,22 @@
     },
     {
       "type": "library",
+      "name": "skops",
+      "version": "0.13.0",
+      "purl": "pkg:pypi/skops@0.13.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "slither-analyzer",
       "version": "0.11.3",
       "purl": "pkg:pypi/slither-analyzer@0.11.3",
@@ -6832,6 +7840,22 @@
       "name": "slowapi",
       "version": "0.1.9",
       "purl": "pkg:pypi/slowapi@0.1.9",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "smmap",
+      "version": "5.0.2",
+      "purl": "pkg:pypi/smmap@5.0.2",
       "properties": [
         {
           "name": "source",
@@ -7136,6 +8160,22 @@
       "name": "sphinxcontrib-serializinghtml",
       "version": "2.0.0",
       "purl": "pkg:pypi/sphinxcontrib-serializinghtml@2.0.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "spikeinterface",
+      "version": "0.103.2",
+      "purl": "pkg:pypi/spikeinterface@0.103.2",
       "properties": [
         {
           "name": "source",
@@ -7693,9 +8733,41 @@
     },
     {
       "type": "library",
+      "name": "toml",
+      "version": "0.10.2",
+      "purl": "pkg:pypi/toml@0.10.2",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "tomli",
       "version": "2.2.1",
       "purl": "pkg:pypi/tomli@2.2.1",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tomlkit",
+      "version": "0.13.3",
+      "purl": "pkg:pypi/tomlkit@0.13.3",
       "properties": [
         {
           "name": "source",
@@ -7901,6 +8973,22 @@
     },
     {
       "type": "library",
+      "name": "twine",
+      "version": "6.2.0",
+      "purl": "pkg:pypi/twine@6.2.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
       "name": "typer",
       "version": "0.20.0",
       "purl": "pkg:pypi/typer@0.20.0",
@@ -8016,6 +9104,22 @@
       "name": "ujson",
       "version": "5.11.0",
       "purl": "pkg:pypi/ujson@5.11.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "umap-learn",
+      "version": "0.5.9.post2",
+      "purl": "pkg:pypi/umap-learn@0.5.9.post2",
       "properties": [
         {
           "name": "source",
@@ -8448,6 +9552,22 @@
       "name": "yarl",
       "version": "1.22.0",
       "purl": "pkg:pypi/yarl@1.22.0",
+      "properties": [
+        {
+          "name": "source",
+          "value": "pip"
+        },
+        {
+          "name": "type",
+          "value": "runtime"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "zarr",
+      "version": "2.18.7",
+      "purl": "pkg:pypi/zarr@2.18.7",
       "properties": [
         {
           "name": "source",

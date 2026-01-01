@@ -127,7 +127,7 @@ def create_sbom_document(python_packages, rust_packages, timestamp):
 
 def main():
     """Main SBOM generation function"""
-    print("📦 Consciousness Nexus - SBOM Generator")
+    print("CONSCIOUSNESS NEXUS - SBOM GENERATOR")
     print("=" * 45)
 
     # Parse arguments
@@ -136,16 +136,16 @@ def main():
 
     if not quiet:
         if include_dev:
-            print("📊 Including development dependencies")
+            print("Status: Including development dependencies")
         else:
-            print("📊 Production dependencies only")
+            print("Status: Production dependencies only")
 
     # Create output directory
     output_dir = Path("MASTER_INDEX/sbom")
     output_dir.mkdir(parents=True, exist_ok=True)
 
     if not quiet:
-        print(f"📁 Output directory: {output_dir}")
+        print(f"Output directory: {output_dir}")
 
     # Generate timestamp
     timestamp = datetime.now().isoformat() + 'Z'
@@ -155,8 +155,8 @@ def main():
     rust_packages = get_rust_dependencies()
 
     if not quiet:
-        print(f"📊 Found {len(python_packages)} Python packages")
-        print(f"📊 Found {len(rust_packages)} Rust packages")
+        print(f"Metrics: Found {len(python_packages)} Python packages")
+        print(f"Metrics: Found {len(rust_packages)} Rust packages")
 
     # Create SBOM document
     sbom = create_sbom_document(python_packages, rust_packages, timestamp)
@@ -197,15 +197,15 @@ def main():
 
     if not quiet:
         print("")
-        print("✅ SBOM Generation Complete")
-        print(f"📄 Files saved to: {output_dir}")
-        print("   ├── sbom.json (Complete SBOM)")
-        print("   ├── python_packages.json (Python dependencies)")
-        print("   └── rust_packages.json (Rust dependencies)")
+        print("SUCCESS: SBOM Generation Complete")
+        print(f"Files saved to: {output_dir}")
+        print("   --- sbom.json (Complete SBOM)")
+        print("   --- python_packages.json (Python dependencies)")
+        print("   --- rust_packages.json (Rust dependencies)")
         print("")
-        print(f"📦 Total components: {len(sbom['components'])}")
-        print(f"🐍 Python packages: {len(python_packages)}")
-        print(f"🦀 Rust packages: {len(rust_packages)}")
+        print(f"Total components: {len(sbom['components'])}")
+        print(f"Python packages: {len(python_packages)}")
+        print(f"Rust packages: {len(rust_packages)}")
 
 
 if __name__ == '__main__':

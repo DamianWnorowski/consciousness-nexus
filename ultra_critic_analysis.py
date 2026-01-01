@@ -36,7 +36,7 @@ class UltraCriticSwarm:
 
     def review_file(self, file_path):
         """Review a single file with all 13 critics"""
-        print(f"🔍 Ultra Critic Swarm analyzing: {file_path}")
+        print(f"REVIEW: Ultra Critic Swarm analyzing: {file_path}")
 
         if not Path(file_path).exists():
             return {
@@ -610,8 +610,8 @@ def main():
     """Run ultra critic swarm on consciousness security fixes"""
     swarm = UltraCriticSwarm()
 
-    target_file = "consciousness_security_fixes.py"
-    print(f"🎯 Executing Ultra Critic Swarm on: {target_file}")
+    target_file = "src/extremumNexusV3.py"
+    print(f"TARGET: Executing Ultra Critic Swarm on: {target_file}")
     print("=" * 60)
 
     report = swarm.review_file(target_file)

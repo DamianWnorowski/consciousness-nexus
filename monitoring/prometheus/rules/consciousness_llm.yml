@@ -1,0 +1,104 @@
+# Prometheus Alert Rules - LLM Observability
+# ===========================================
+
+groups:
+  - name: consciousness_llm_alerts
+    interval: 30s
+    rules:
+      # High LLM error rate
+      - alert: LLMHighErrorRate
+        expr: |
+          sum by (provider, model) (rate(consciousness_llm_errors_total[5m]))
+          /
+          sum by (provider, model) (rate(consciousness_llm_calls_total[5m]))
+          > 0.1
+        for: 5m
+        labels:
+          severity: high
+          category: llm
+        annotations:
+          summary: "High LLM error rate for {{ $labels.provider }}/{{ $labels.model }}"
+          description: "LLM error rate is {{ $value | humanizePercentage }}"
+
+      # LLM latency spike
+      - alert: LLMHighLatency
+        expr: |
+          histogram_quantile(0.95,
+            sum by (provider, model, le) (rate(consciousness_llm_latency_seconds_bucket[5m]))
+          ) > 30
+        for: 5m
+        labels:
+          severity: high
+          category: llm
+        annotations:
+          summary: "High LLM latency for {{ $labels.provider }}/{{ $labels.model }}"
+          description: "P95 latency is {{ $value | humanizeDuration }}"
+
+      # Rate limit hits
+      - alert: LLMRateLimitHits
+        expr: |
+          sum by (provider, model) (rate(consciousness_llm_rate_limit_hits_total[5m])) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+          category: llm
+        annotations:
+          summary: "LLM rate limits being hit for {{ $labels.provider }}/{{ $labels.model }}"
+          description: "Rate limit hits: {{ $value }} per second"
+
+      # Token budget consumption
+      - alert: HighTokenConsumption
+        expr: |
+          sum(increase(consciousness_llm_tokens_input_total[1h]) + increase(consciousness_llm_tokens_output_total[1h]))
+          > 1000000
+        for: 1h
+        labels:
+          severity: warning
+          category: llm
+        annotations:
+          summary: "High token consumption in last hour"
+          description: "Consumed {{ $value | humanize }} tokens in the last hour"
+
+      # Cost alert (daily budget)
+      - alert: LLMDailyBudgetExceeded
+        expr: |
+          sum(increase(consciousness_llm_cost_dollars_total[24h])) > 100
+        for: 1h
+        labels:
+          severity: high
+          category: llm
+          category: finops
+        annotations:
+          summary: "LLM daily cost budget exceeded"
+          description: "Spent ${{ $value | printf \"%.2f\" }} in the last 24 hours (budget: $100)"
+
+      # Provider degradation
+      - alert: LLMProviderDegraded
+        expr: |
+          (
+            sum by (provider) (rate(consciousness_llm_errors_total[15m]))
+            +
+            sum by (provider) (rate(consciousness_llm_rate_limit_hits_total[15m]))
+          )
+          /
+          sum by (provider) (rate(consciousness_llm_calls_total[15m]))
+          > 0.2
+        for: 10m
+        labels:
+          severity: high
+          category: llm
+        annotations:
+          summary: "LLM provider {{ $labels.provider }} is degraded"
+          description: "Combined error + rate limit rate is {{ $value | humanizePercentage }}"
+
+      # No LLM calls (possible issue)
+      - alert: NoLLMCalls
+        expr: |
+          sum(rate(consciousness_llm_calls_total[30m])) == 0
+        for: 30m
+        labels:
+          severity: warning
+          category: llm
+        annotations:
+          summary: "No LLM calls in the last 30 minutes"
+          description: "This may indicate a connectivity issue or service problem"

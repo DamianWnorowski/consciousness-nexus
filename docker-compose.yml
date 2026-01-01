@@ -34,6 +34,20 @@ services:
       - CONSCIOUSNESS_METRICS_ENABLED=true
       - REDIS_URL=redis://redis:6379/0
       - DATABASE_URL=postgresql://consciousness:consciousness_secure_2024@postgres:5432/consciousness
+      # OpenTelemetry Configuration
+      - OTEL_SERVICE_NAME=consciousness-nexus-api
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - OTEL_EXPORTER_OTLP_PROTOCOL=grpc
+      - OTEL_TRACES_EXPORTER=otlp
+      - OTEL_METRICS_EXPORTER=otlp
+      - OTEL_LOGS_EXPORTER=otlp
+      - ENVIRONMENT=production
+      # LLM Observability (optional)
+      - LANGFUSE_ENABLED=${LANGFUSE_ENABLED:-false}
+      - LANGFUSE_PUBLIC_KEY=${LANGFUSE_PUBLIC_KEY:-}
+      - LANGFUSE_SECRET_KEY=${LANGFUSE_SECRET_KEY:-}
+      - PHOENIX_ENABLED=true
+      - PHOENIX_ENDPOINT=http://phoenix:6006
     volumes:
       - ./logs:/app/logs
       - ./data:/app/data
@@ -195,6 +209,108 @@ services:
       - consciousness-network
     restart: unless-stopped
 
+  # =============================================================================
+  # OBSERVABILITY STACK - OpenTelemetry Collector, Tempo, Jaeger, AlertManager
+  # =============================================================================
+
+  # OpenTelemetry Collector - Central telemetry pipeline
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    container_name: consciousness-otel-collector
+    command: ["--config=/etc/otel-collector-config.yml"]
+    ports:
+      - "4317:4317"     # OTLP gRPC receiver
+      - "4318:4318"     # OTLP HTTP receiver
+      - "8888:8888"     # Prometheus metrics exposed by collector
+      - "8889:8889"     # Prometheus exporter metrics
+      - "13133:13133"   # Health check
+      - "55679:55679"   # zpages
+    volumes:
+      - ./monitoring/otel-collector-config.yml:/etc/otel-collector-config.yml:ro
+    depends_on:
+      - prometheus
+      - tempo
+      - loki
+    networks:
+      - consciousness-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "localhost:13133/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Grafana Tempo - Distributed Tracing Backend
+  tempo:
+    image: grafana/tempo:latest
+    container_name: consciousness-tempo
+    command: ["-config.file=/etc/tempo.yml"]
+    ports:
+      - "3200:3200"     # Tempo API
+      - "9095:9095"     # Tempo gRPC
+      - "4320:4317"     # OTLP gRPC (internal)
+      - "4321:4318"     # OTLP HTTP (internal)
+    volumes:
+      - ./monitoring/tempo.yml:/etc/tempo.yml:ro
+      - tempo_data:/tmp/tempo
+    networks:
+      - consciousness-network
+    restart: unless-stopped
+
+  # Jaeger - Distributed Tracing UI (alternative to Tempo)
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: consciousness-jaeger
+    ports:
+      - "16686:16686"   # Jaeger UI
+      - "6831:6831/udp" # Thrift compact
+      - "6832:6832/udp" # Thrift binary
+      - "14268:14268"   # HTTP collector
+      - "14250:14250"   # gRPC collector
+      - "9411:9411"     # Zipkin compatible
+    environment:
+      - COLLECTOR_ZIPKIN_HOST_PORT=:9411
+      - SPAN_STORAGE_TYPE=badger
+      - BADGER_EPHEMERAL=false
+      - BADGER_DIRECTORY_VALUE=/badger/data
+      - BADGER_DIRECTORY_KEY=/badger/key
+    volumes:
+      - jaeger_data:/badger
+    networks:
+      - consciousness-network
+    restart: unless-stopped
+
+  # AlertManager - Alert Handling
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: consciousness-alertmanager
+    ports:
+      - "9093:9093"
+    volumes:
+      - ./monitoring/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+      - alertmanager_data:/alertmanager
+    command:
+      - '--config.file=/etc/alertmanager/alertmanager.yml'
+      - '--storage.path=/alertmanager'
+      - '--web.external-url=http://localhost:9093'
+    networks:
+      - consciousness-network
+    restart: unless-stopped
+
+  # Arize Phoenix - LLM Observability (Self-Hosted)
+  phoenix:
+    image: arizephoenix/phoenix:latest
+    container_name: consciousness-phoenix
+    ports:
+      - "6006:6006"
+    environment:
+      - PHOENIX_WORKING_DIR=/data
+    volumes:
+      - phoenix_data:/data
+    networks:
+      - consciousness-network
+    restart: unless-stopped
+
   # Web Dashboard
   dashboard:
     build:
@@ -218,6 +334,10 @@ volumes:
   grafana_data:
   nginx_logs:
   loki_data:
+  tempo_data:
+  jaeger_data:
+  alertmanager_data:
+  phoenix_data:
 
 networks:
   consciousness-network:

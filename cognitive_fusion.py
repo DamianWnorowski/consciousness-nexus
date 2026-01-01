@@ -439,7 +439,7 @@ def main():
     parser.add_argument("query", help="Query to fuse outputs for")
     parser.add_argument("--strategy", choices=[s.value for s in FusionStrategy],
                        default="synthesis", help="Fusion strategy")
-    parser.add_argument("--tools", nargs="*", help="Specific tools to use")
+    parser.add_argument("--tools", nargs="*", help="Tools to fuse")
 
     args = parser.parse_args()
 

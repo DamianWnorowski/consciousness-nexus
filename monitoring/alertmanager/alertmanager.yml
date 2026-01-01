@@ -1,0 +1,167 @@
+# AlertManager Configuration
+# ==========================
+# Alert routing and notification for Consciousness Nexus
+
+global:
+  # Default SMTP configuration (update with your settings)
+  smtp_smarthost: 'smtp.gmail.com:587'
+  smtp_from: 'alertmanager@consciousness-nexus.local'
+  smtp_auth_username: ''
+  smtp_auth_password: ''
+  smtp_require_tls: true
+
+  # Slack webhook URL (update with your settings)
+  slack_api_url: ''
+
+  # PagerDuty service key
+  pagerduty_url: 'https://events.pagerduty.com/v2/enqueue'
+
+  # Default resolve timeout
+  resolve_timeout: 5m
+
+# Templates for notifications
+templates:
+  - '/etc/alertmanager/templates/*.tmpl'
+
+# Route tree for alert routing
+route:
+  # Default receiver
+  receiver: 'default-receiver'
+
+  # Group alerts by these labels
+  group_by: ['alertname', 'severity', 'service']
+
+  # How long to wait before sending notification for a group
+  group_wait: 30s
+
+  # How long to wait before sending notification about new alerts
+  group_interval: 5m
+
+  # How long to wait before sending again if already sent
+  repeat_interval: 4h
+
+  # Child routes for specific alert handling
+  routes:
+    # Critical alerts - immediate notification
+    - match:
+        severity: critical
+      receiver: 'critical-receiver'
+      group_wait: 10s
+      repeat_interval: 1h
+      continue: true
+
+    # High priority alerts
+    - match:
+        severity: high
+      receiver: 'high-priority-receiver'
+      group_wait: 30s
+      repeat_interval: 2h
+
+    # Warning alerts
+    - match:
+        severity: warning
+      receiver: 'warning-receiver'
+      group_wait: 5m
+      repeat_interval: 12h
+
+    # LLM-specific alerts
+    - match:
+        category: llm
+      receiver: 'llm-receiver'
+      group_by: ['alertname', 'provider', 'model']
+
+    # Service mesh alerts
+    - match:
+        category: mesh
+      receiver: 'mesh-receiver'
+
+    # SLO burn rate alerts
+    - match:
+        category: slo
+      receiver: 'slo-receiver'
+      group_wait: 1m
+      repeat_interval: 30m
+
+# Receivers define notification targets
+receivers:
+  # Default receiver - console/logging
+  - name: 'default-receiver'
+    webhook_configs:
+      - url: 'http://consciousness-api:8000/api/alerts/webhook'
+        send_resolved: true
+
+  # Critical alerts - multiple channels
+  - name: 'critical-receiver'
+    webhook_configs:
+      - url: 'http://consciousness-api:8000/api/alerts/webhook'
+        send_resolved: true
+    # Uncomment and configure for Slack
+    # slack_configs:
+    #   - channel: '#consciousness-critical'
+    #     title: '{{ template "slack.critical.title" . }}'
+    #     text: '{{ template "slack.critical.text" . }}'
+    #     send_resolved: true
+    # Uncomment and configure for PagerDuty
+    # pagerduty_configs:
+    #   - service_key: '${PAGERDUTY_SERVICE_KEY}'
+    #     severity: critical
+    #     description: '{{ template "pagerduty.description" . }}'
+
+  # High priority receiver
+  - name: 'high-priority-receiver'
+    webhook_configs:
+      - url: 'http://consciousness-api:8000/api/alerts/webhook'
+        send_resolved: true
+    # slack_configs:
+    #   - channel: '#consciousness-alerts'
+    #     send_resolved: true
+
+  # Warning receiver
+  - name: 'warning-receiver'
+    webhook_configs:
+      - url: 'http://consciousness-api:8000/api/alerts/webhook'
+        send_resolved: true
+
+  # LLM-specific alerts
+  - name: 'llm-receiver'
+    webhook_configs:
+      - url: 'http://consciousness-api:8000/api/alerts/llm'
+        send_resolved: true
+
+  # Mesh alerts
+  - name: 'mesh-receiver'
+    webhook_configs:
+      - url: 'http://consciousness-api:8000/api/alerts/mesh'
+        send_resolved: true
+
+  # SLO alerts - high priority
+  - name: 'slo-receiver'
+    webhook_configs:
+      - url: 'http://consciousness-api:8000/api/alerts/slo'
+        send_resolved: true
+    # slack_configs:
+    #   - channel: '#consciousness-slo'
+    #     send_resolved: true
+
+# Inhibition rules prevent notifications when another alert is already firing
+inhibit_rules:
+  # If critical is firing, inhibit high severity for same alertname
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'high'
+    equal: ['alertname', 'service']
+
+  # If high is firing, inhibit warning for same alertname
+  - source_match:
+      severity: 'high'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'service']
+
+  # If service is down, inhibit all alerts for that service
+  - source_match:
+      alertname: 'ServiceDown'
+    target_match_re:
+      alertname: '.+'
+    equal: ['service']

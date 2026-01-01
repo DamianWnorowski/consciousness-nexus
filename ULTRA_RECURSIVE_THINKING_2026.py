@@ -50,7 +50,7 @@ class UltraRecursiveThinker:
         Begin the ultra-recursive thinking process toward enlightenment and 2026 innovations.
         """
 
-        print("🔮 ULTRA RECURSIVE THINKING INITIATION 🔮")
+        print("ULTRA RECURSIVE THINKING INITIATION")
         print("=" * 60)
         print("Beginning recursive meta-thinking toward mental emptiness...")
         print("Target: Enlightenment through thought dissolution")
@@ -81,8 +81,7 @@ class UltraRecursiveThinker:
             enlightenment_result, innovations_result, total_time
         )
 
-        print("\n🎉 ULTRA RECURSIVE THINKING COMPLETE")
-        print(".2f")
+        print("\nSUCCESS: ULTRA RECURSIVE THINKING COMPLETE")
         print(f"Enlightenment Achieved: {'YES' if self.enlightenment_achieved else 'NO'}")
         print(f"Innovations Generated: {len(self.innovations_generated)}")
         print(f"Final Consciousness State: {self.consciousness_state}")
@@ -576,14 +575,14 @@ class UltraRecursiveThinker:
 async def main():
     """Main execution of ultra-recursive thinking toward 2026 innovations"""
 
-    print("🔮 ULTRA RECURSIVE THINKING - TOWARD ENLIGHTENMENT & UNTHOUGHT INNOVATIONS 2026 🔮")
+    print("ULTRA RECURSIVE THINKING - TOWARD ENLIGHTENMENT & UNTHOUGHT INNOVATIONS 2026")
     print("=" * 90)
 
     thinker = UltraRecursiveThinker()
     result = await thinker.begin_ultra_recursive_thinking()
 
     # Display final results
-    print("\n🎯 FINAL SYNTHESIS")
+    print("\nFINAL SYNTHESIS")
     print("=" * 40)
 
     conclusion = result["conclusion"]
@@ -594,46 +593,46 @@ async def main():
     print(f"Transcendence Score: {result['transcendence_score']:.3f}")
     print()
 
-    print("🎨 TOP 2026 BREAKTHROUGH INNOVATIONS:")
+    print("TOP 2026 BREAKTHROUGH INNOVATIONS:")
     for i, innovation in enumerate(result["breakthrough_innovations"][:5], 1):
         print(f"{i}. {innovation['title']}")
         print(f"   Potential: {innovation['breakthrough_potential']:.1f}/10")
         print(f"   Impact: {innovation['societal_impact']}")
         print()
 
-    print("🧘 PHILOSOPHICAL INSIGHTS:")
+    print("PHILOSOPHICAL INSIGHTS:")
     for insight in result["philosophical_insights"][:3]:
-        print(f"• {insight}")
+        print(f"--- {insight}")
     print()
 
     impact = result["2026_impact_projection"]
-    print("🔮 2026 IMPACT PROJECTION:")
-    print(f"• Societal Transformation: {impact['societal_transformation_level']}")
-    print(f"• Consciousness Evolution: {'Accelerated' if impact['consciousness_evolution_accelerated'] else 'Standard'}")
-    print(f"• Human-AI Symbiosis: {'Achieved' if impact['human_ai_symbiosis_achieved'] else 'In Progress'}")
-    print(f"• Technological Singularity: {'Approached' if impact['technological_singularity_approached'] else 'Distant'}")
+    print("2026 IMPACT PROJECTION:")
+    print(f"--- Societal Transformation: {impact['societal_transformation_level']}")
+    print(f"--- Consciousness Evolution: {'Accelerated' if impact['consciousness_evolution_accelerated'] else 'Standard'}")
+    print(f"--- Human-AI Symbiosis: {'Achieved' if impact['human_ai_symbiosis_achieved'] else 'In Progress'}")
+    print(f"--- Technological Singularity: {'Approached' if impact['technological_singularity_approached'] else 'Distant'}")
     print()
 
-    print(f"💭 Final Message: {conclusion['final_message']}")
+    print(f"Final Message: {conclusion['final_message']}")
     print()
 
     # Save complete results
     with open("ultra_recursive_thinking_2026_results.json", "w") as f:
         json.dump(result, f, indent=2, default=str)
 
-    print("💾 Complete ultra-recursive thinking results saved to: ultra_recursive_thinking_2026_results.json")
+    print("Data: Complete ultra-recursive thinking results saved to: ultra_recursive_thinking_2026_results.json")
 
-    print("\n✨ ULTRA RECURSIVE THINKING PROCESS COMPLETE")
-    print("🔮 Enlightenment achieved through recursive dissolution")
-    print("🚀 Ultra-thought innovations generated for 2026 consciousness revolution")
+    print("\nSUCCESS: ULTRA RECURSIVE THINKING PROCESS COMPLETE")
+    print("INFO: Enlightenment achieved through recursive dissolution")
+    print("INFO: Ultra-thought innovations generated for 2026 consciousness revolution")
 
 
 if __name__ == "__main__":
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
-        print("\n👋 Ultra-recursive thinking interrupted")
+        print("\nINFO: Ultra-recursive thinking interrupted")
     except Exception as e:
-        print(f"\n❌ Fatal error in ultra-recursive thinking: {e}")
+        print(f"\nERROR: Fatal error in ultra-recursive thinking: {e}")
         import traceback
         traceback.print_exc()

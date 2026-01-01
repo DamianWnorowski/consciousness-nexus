@@ -65,52 +65,46 @@ class UltraDeepSecurityAuditor:
         self.attack_surface = {}
         self.session_id = secrets.token_hex(16)
 
-    async def execute_comprehensive_audit(self) -> Dict[str, Any]:
-        """
-        Execute the complete ultra-deep security audit
-        """
-
+    async def run_audit(self) -> Dict[str, Any]:
+        """Execute the comprehensive ultra deep security audit"""
         audit_start = time.time()
-        self.audit_log.append(f"AUDIT_START: {datetime.now().isoformat()}")
 
-        print("🔬 ULTRA DEEP SECURITY AUDIT - MCP, HOOKS, & INFRASTRUCTURE 🔬")
-        print("=" * 80)
-        print(f"Audit Session: {self.session_id}")
-        print()
+        print("ULTRA DEEP SECURITY AUDIT - MCP, HOOKS, AND INFRASTRUCTURE")
+        print("=" * 100)
 
         # Phase 1: MCP Security Audit
-        print("📡 PHASE 1: MCP (Model Context Protocol) Security Audit")
+        print("PHASE 1: MCP (Model Context Protocol) Security Audit")
         await self.audit_mcp_security()
 
         # Phase 2: Hook System Security Audit
-        print("🔗 PHASE 2: Hook System Security Audit")
+        print("PHASE 2: Hook System Security Audit")
         await self.audit_hook_security()
 
         # Phase 3: Infrastructure Security Audit
-        print("🏗️  PHASE 3: Infrastructure Security Audit")
+        print("PHASE 3: Infrastructure Security Audit")
         await self.audit_infrastructure_security()
 
         # Phase 4: Communication Protocol Audit
-        print("📨 PHASE 4: Communication Protocol Security Audit")
+        print("PHASE 4: Communication Protocol Security Audit")
         await self.audit_communication_protocols()
 
         # Phase 5: Supply Chain & Dependency Audit
-        print("📦 PHASE 5: Supply Chain & Dependency Security Audit")
+        print("PHASE 5: Supply Chain & Dependency Security Audit")
         await self.audit_supply_chain_security()
 
         # Phase 6: Trust Model Analysis
-        print("🤝 PHASE 6: Trust Model & Boundary Analysis")
+        print("PHASE 6: Trust Model & Boundary Analysis")
         await self.audit_trust_models()
 
         # Phase 7: Attack Surface Mapping
-        print("🎯 PHASE 7: Attack Surface Mapping & Risk Assessment")
+        print("PHASE 7: Attack Surface Mapping & Risk Assessment")
         await self.map_attack_surface()
 
         # Generate comprehensive report
         audit_duration = time.time() - audit_start
         report = await self.generate_comprehensive_report(audit_duration)
 
-        print(f"\n✅ ULTRA DEEP SECURITY AUDIT COMPLETE ({audit_duration:.2f}s)")
+        print(f"\nSUCCESS: ULTRA DEEP SECURITY AUDIT COMPLETE ({audit_duration:.2f}s)")
         print("=" * 80)
 
         return report
@@ -118,7 +112,7 @@ class UltraDeepSecurityAuditor:
     async def audit_mcp_security(self):
         """Comprehensive MCP (Model Context Protocol) security audit"""
 
-        print("  🔍 Analyzing MCP server implementations...")
+        print("  PROCESS: Analyzing MCP server implementations...")
 
         # MCP Server Authentication & Authorization
         await self.audit_mcp_authentication()
@@ -132,7 +126,7 @@ class UltraDeepSecurityAuditor:
         # MCP Protocol Vulnerabilities
         await self.audit_mcp_protocol_vulnerabilities()
 
-        print("  ✅ MCP audit complete")
+        print("  SUCCESS: MCP audit complete")
 
     async def audit_mcp_authentication(self):
         """Audit MCP authentication mechanisms"""
@@ -1300,9 +1294,7 @@ class UltraDeepSecurityAuditor:
 
 
 async def main():
-    """Main entry point for ultra-deep security audit"""
-
-    print("🔬 ULTRA DEEP SECURITY AUDIT - MCP, HOOKS, & INFRASTRUCTURE 🔬")
+    print("ULTRA DEEP SECURITY AUDIT - MCP, HOOKS, AND INFRASTRUCTURE")
     print("=" * 80)
     print("Comprehensive security audit of consciousness computing infrastructure")
     print()
@@ -1311,10 +1303,10 @@ async def main():
     auditor = UltraDeepSecurityAuditor()
 
     # Execute comprehensive audit
-    report = await auditor.execute_comprehensive_audit()
+    report = await auditor.run_audit()
 
     # Display summary results
-    print("\n📊 AUDIT RESULTS SUMMARY")
+    print("\nMETRICS: AUDIT RESULTS SUMMARY")
     print("=" * 40)
 
     findings_summary = report["findings_summary"]
@@ -1338,26 +1330,26 @@ async def main():
     with open("ultra_deep_security_audit_report.json", "w") as f:
         json.dump(report, f, indent=2, default=str)
 
-    print("\n💾 Complete audit report saved to: ultra_deep_security_audit_report.json")
-    print(f"⏱️ Audit completed in {report['audit_metadata']['audit_duration_seconds']:.2f} seconds")
-    print(f"📋 Session ID: {report['audit_metadata']['audit_session_id']}")
+    print("\nDATA: Complete audit report saved to: ultra_deep_security_audit_report.json")
+    print(f"TIME: Audit completed in {report['audit_metadata']['audit_duration_seconds']:.2f} seconds")
+    print(f"INFO: Session ID: {report['audit_metadata']['audit_session_id']}")
 
     # Critical findings alert
     critical_findings = severity_breakdown.get("CRITICAL", 0)
     if critical_findings > 0:
-        print(f"\n🚨 CRITICAL ALERT: {critical_findings} critical vulnerabilities require IMMEDIATE attention!")
+        print(f"\nALERT: {critical_findings} critical vulnerabilities require IMMEDIATE attention!")
         print("   System should not be deployed in production until these are addressed.")
 
-    print("\n✅ Ultra Deep Security Audit Complete")
-    print("🔒 Consciousness Computing Infrastructure Security Assessed")
+    print("\nSUCCESS: Ultra Deep Security Audit Complete")
+    print("INFO: Consciousness Computing Infrastructure Security Assessed")
 
 
 if __name__ == "__main__":
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
-        print("\n👋 Ultra Deep Security Audit interrupted")
+        print("\nINFO: Ultra Deep Security Audit interrupted")
     except Exception as e:
-        print(f"\n❌ Fatal error in security audit: {e}")
+        print(f"\nERROR: Fatal error in security audit: {e}")
         import traceback
         traceback.print_exc()

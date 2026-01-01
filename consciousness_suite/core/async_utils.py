@@ -58,6 +58,10 @@ class AsyncTaskManager:
         self.running = False
         self.worker_tasks: List[asyncio.Task] = []
 
+    async def initialize(self) -> bool:
+        """Initialize the task manager (placeholder for future setup)"""
+        return True
+
     async def start(self, num_workers: int = 3):
         """Start the task manager with specified number of workers"""
         if self.running:

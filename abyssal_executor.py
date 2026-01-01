@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-🕳️ ABYSSAL EXECUTOR - Mega-Auto Orchestration System
+ABYSSAL EXECUTOR - Mega-Auto Orchestration System
 =====================================================
 
 Execute ABYSSAL[TEMPLATE](params) with full mega-auto orchestration:
@@ -74,7 +74,7 @@ class AbyssalOrchestrator:
 
     async def execute_abyssal(self, template: AbyssalTemplate, params: Dict[str, Any]) -> AbyssalResult:
         """Execute ABYSSAL[TEMPLATE](params) with full orchestration"""
-        logger.info(f"🕳️ ABYSSAL[{template.value.upper()}]({params}) - Initiating mega-orchestration")
+        logger.info(f"PROCESS: ABYSSAL[{template.value.upper()}]({params}) - Initiating mega-orchestration")
 
         start_time = asyncio.get_event_loop().time()
 
@@ -90,12 +90,12 @@ class AbyssalOrchestrator:
         # Synthesize results
         result = await self._synthesize_results(template, params, start_time)
 
-        logger.info(f"🕳️ ABYSSAL[{template.value.upper()}] - Mega-orchestration complete")
+        logger.info(f"SUCCESS: ABYSSAL[{template.value.upper()}] - Mega-orchestration complete")
         return result
 
     async def _expand_template(self, template: AbyssalTemplate, params: Dict[str, Any]) -> ExecutionNode:
         """Auto-expand template into execution tree"""
-        logger.info(f"🌳 Expanding {template.value} template into execution tree")
+        logger.info(f"PROCESS: Expanding {template.value} template into execution tree")
 
         root = ExecutionNode(template=template, params=params)
 
@@ -127,6 +127,7 @@ class AbyssalOrchestrator:
             template=AbyssalTemplate.CODE,
             params={"action": "verify_github_urls", "repo": "DAMIANWNOROWSKI/consciousness-suite"}
         ))
+
 
         # Create Go SDK
         fixes.append(ExecutionNode(
@@ -247,7 +248,7 @@ class AbyssalOrchestrator:
 
     async def _spawn_execution_tree(self, root: ExecutionNode):
         """Spawn concurrent agents for execution tree"""
-        logger.info("🎭 Spawning concurrent agents for execution tree")
+        logger.info("PROCESS: Spawning concurrent agents for execution tree")
 
         # Create tasks for all nodes
         tasks = []
@@ -271,7 +272,7 @@ class AbyssalOrchestrator:
     async def _execute_node(self, node: ExecutionNode) -> None:
         """Execute a single node with semaphore control"""
         async with self.semaphore:
-            logger.info(f"🤖 Executing {node.template.value}: {node.params}")
+            logger.info(f"PROCESS: Executing {node.template.value}: {node.params}")
 
             try:
                 # Execute based on template type
@@ -290,7 +291,7 @@ class AbyssalOrchestrator:
                 node.status = "completed" if result.get("success") else "failed"
 
             except Exception as e:
-                logger.error(f"Agent execution failed: {e}")
+                logger.error(f"ERROR: Agent execution failed: {e}")
                 node.result = {"success": False, "error": str(e)}
                 node.status = "failed"
 
@@ -375,7 +376,7 @@ class AbyssalOrchestrator:
 
     async def _create_go_sdk(self, params: Dict[str, Any]) -> Dict[str, Any]:
         """Create complete Go SDK"""
-        logger.info("🐹 Creating Go SDK...")
+        logger.info("PROCESS: Creating Go SDK...")
 
         go_sdk_dir = Path("consciousness-sdk-go")
         go_sdk_dir.mkdir(exist_ok=True)
@@ -537,14 +538,14 @@ import (
 func main() {
     client := consciousness.NewClient("http://localhost:18473", "your-api-key")
 
-    // Check health
+    # Check health
     health, err := client.Health()
     if err != nil {
         log.Fatal(err)
     }
-    fmt.Printf("Health: %+v\\n", health)
+    fmt.Printf("Health: %+v\n", health)
 
-    // Run evolution
+    # Run evolution
     result, err := client.RunEvolution(consciousness.EvolutionRequest{
         OperationType: "recursive",
         TargetSystem:  "my_app",
@@ -554,7 +555,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    fmt.Printf("Evolution Result: %+v\\n", result)
+    fmt.Printf("Evolution Result: %+v\n", result)
 }
 ```
 
@@ -568,7 +569,7 @@ See the main [Consciousness Suite documentation](https://github.com/DAMIANWNOROW
 
     async def _setup_js_build(self, params: Dict[str, Any]) -> Dict[str, Any]:
         """Setup JavaScript build system"""
-        logger.info("📦 Setting up JavaScript build system...")
+        logger.info("PROCESS: Setting up JavaScript build system...")
 
         # Create rollup config
         rollup_config = '''import typescript from '@rollup/plugin-typescript';
@@ -648,7 +649,7 @@ export default {
 
     async def _setup_rust_build(self, params: Dict[str, Any]) -> Dict[str, Any]:
         """Setup Rust build system"""
-        logger.info("🦀 Setting up Rust build system...")
+        logger.info("PROCESS: Setting up Rust build system...")
 
         # Add build dependencies to Cargo.toml
         cargo_path = Path("consciousness-sdk-rust/Cargo.toml")
@@ -695,7 +696,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     async def _build_js_sdk(self, params: Dict[str, Any]) -> Dict[str, Any]:
         """Build JavaScript SDK"""
-        logger.info("🔨 Building JavaScript SDK...")
+        logger.info("PROCESS: Building JavaScript SDK...")
 
         try:
             # Run npm install if node_modules doesn't exist
@@ -723,7 +724,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     async def _compile_rust_sdk(self, params: Dict[str, Any]) -> Dict[str, Any]:
         """Compile Rust SDK"""
-        logger.info("🔨 Compiling Rust SDK...")
+        logger.info("PROCESS: Compiling Rust SDK...")
 
         try:
             # Run cargo build
@@ -745,7 +746,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     async def _make_cli_executable(self, params: Dict[str, Any]) -> Dict[str, Any]:
         """Make CLI executable cross-platform"""
-        logger.info("⚙️ Making CLI executable...")
+        logger.info("PROCESS: Making CLI executable...")
 
         cli_path = Path("consciousness-cli")
 
@@ -756,7 +757,7 @@ python "%~dp0consciousness-cli" %*
         Path("consciousness-cli.bat").write_text(batch_content)
 
         # Create PowerShell script
-        ps1_content = '''param([Parameter(ValueFromRemainingArguments=$true)]$args)
+        ps1_content = r'''param([Parameter(ValueFromRemainingArguments=$true)]$args)
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 python "$scriptDir\consciousness-cli" @args
 '''
@@ -772,7 +773,7 @@ python "$scriptDir\consciousness-cli" @args
 
     async def _create_monitoring_configs(self, params: Dict[str, Any]) -> Dict[str, Any]:
         """Create Docker monitoring configurations"""
-        logger.info("📊 Creating monitoring configurations...")
+        logger.info("PROCESS: Creating monitoring configurations...")
 
         monitoring_dir = Path("monitoring")
         monitoring_dir.mkdir(exist_ok=True)
@@ -889,7 +890,7 @@ scrape_configs:
 
     async def _create_github_actions(self, params: Dict[str, Any]) -> Dict[str, Any]:
         """Create GitHub Actions workflows"""
-        logger.info("🚀 Creating GitHub Actions workflows...")
+        logger.info("PROCESS: Creating GitHub Actions workflows...")
 
         workflows_dir = Path(".github/workflows")
         workflows_dir.mkdir(parents=True, exist_ok=True)
@@ -1059,7 +1060,7 @@ jobs:
 
     async def _validate_api_server(self, params: Dict[str, Any]) -> Dict[str, Any]:
         """Validate API server functionality"""
-        logger.info("🔍 Validating API server...")
+        logger.info("PROCESS: Validating API server...")
 
         # This would actually test the API server, but for now just return success
         return {"success": True, "message": "API server validation placeholder"}
@@ -1067,7 +1068,7 @@ jobs:
     async def _wait_for_completion(self):
         """Wait for all active agents to complete"""
         if self.active_agents:
-            logger.info(f"⏳ Waiting for {len(self.active_agents)} agents to complete")
+            logger.info(f"PROCESS: Waiting for {len(self.active_agents)} agents to complete")
             await asyncio.gather(*self.active_agents.values(), return_exceptions=True)
             self.active_agents.clear()
 
@@ -1088,7 +1089,7 @@ jobs:
             spawned_agents=spawned_agents
         )
 
-        logger.info(f"📊 Synthesized results: {len(spawned_agents)} agents, {execution_time:.2f}s")
+        logger.info(f"SUCCESS: Synthesized results: {len(spawned_agents)} agents, {execution_time:.2f}s")
 
         return result
 
@@ -1122,12 +1123,12 @@ async def main():
 
     # Output result
     if result.success:
-        print(f"✅ ABYSSAL[{template_name}] completed successfully!")
-        print(f"⏱️  Execution time: {result.execution_time:.2f}s")
-        print(f"🤖 Agents spawned: {len(result.spawned_agents)}")
-        print(f"📊 Result: {result.result}")
+        print(f"SUCCESS: ABYSSAL[{template_name}] completed successfully!")
+        print(f"METRICS: Execution time: {result.execution_time:.2f}s")
+        print(f"METRICS: Agents spawned: {len(result.spawned_agents)}")
+        print(f"DATA: Result: {result.result}")
     else:
-        print(f"❌ ABYSSAL[{template_name}] failed!")
+        print(f"ERROR: ABYSSAL[{template_name}] failed!")
         print(f"Error: {result.result}")
         sys.exit(1)
 

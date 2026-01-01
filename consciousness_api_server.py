@@ -15,11 +15,25 @@ import os
 import uvicorn
 from fastapi import FastAPI, HTTPException, BackgroundTasks, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse, StreamingResponse
+from fastapi.responses import JSONResponse, StreamingResponse, PlainTextResponse
 from pydantic import BaseModel, Field
 from typing import Dict, Any, List, Optional, Union
 import logging
 import uuid
+
+# Import observability modules
+from consciousness_suite.observability import (
+    setup_observability,
+    ObservabilityConfig,
+    get_tracer,
+    get_meter,
+)
+from consciousness_suite.observability.middleware import ObservabilityMiddleware
+from consciousness_suite.observability.prometheus.middleware import (
+    get_metrics_handler,
+    setup_prometheus,
+)
+from consciousness_suite.observability.tracing import traced
 
 # Import all consciousness systems
 from consciousness_suite import (
@@ -107,6 +121,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Observability middleware - distributed tracing and metrics
+app.add_middleware(
+    ObservabilityMiddleware,
+    service_name="consciousness-nexus-api",
+    exclude_paths=["/metrics", "/health", "/ready", "/live", "/docs", "/redoc", "/openapi.json"],
+)
+
 # Authentication middleware
 @app.middleware("http")
 async def auth_middleware(request: Request, call_next):
@@ -170,6 +191,27 @@ async def startup_event():
     logger.info("[*] Starting Consciousness API Server...")
 
     try:
+        # Initialize observability stack
+        observability_config = ObservabilityConfig(
+            service_name="consciousness-nexus-api",
+            service_version="2.0.0",
+            environment=os.getenv("ENVIRONMENT", "development"),
+            otlp_endpoint=os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT", "http://otel-collector:4317"),
+            enable_prometheus=True,
+            enable_tracing=True,
+            trace_sample_rate=1.0,
+            langfuse_enabled=os.getenv("LANGFUSE_ENABLED", "false").lower() == "true",
+            langfuse_public_key=os.getenv("LANGFUSE_PUBLIC_KEY"),
+            langfuse_secret_key=os.getenv("LANGFUSE_SECRET_KEY"),
+        )
+        setup_observability(observability_config)
+        logger.info("[OK] Observability stack initialized")
+
+        # Initialize Prometheus collectors
+        setup_prometheus(observability_config)
+        logger.info("[OK] Prometheus collectors initialized")
+
+        # Initialize consciousness suite
         await initialize_consciousness_suite()
         logger.info("[OK] Consciousness Suite initialized successfully")
 
@@ -208,6 +250,21 @@ async def health_check():
         "active_sessions": len(active_sessions),
         "uptime": time.time() - server_start_time
     }
+
+@app.get("/ready")
+async def readiness_check():
+    """Kubernetes readiness probe"""
+    return {"status": "ready"}
+
+@app.get("/live")
+async def liveness_check():
+    """Kubernetes liveness probe"""
+    return {"status": "alive"}
+
+@app.get("/metrics")
+async def metrics_endpoint():
+    """Prometheus metrics endpoint"""
+    return get_metrics_handler()()
 
 @app.post("/auth/login", response_model=APIResponse)
 async def login(request: AuthRequest):

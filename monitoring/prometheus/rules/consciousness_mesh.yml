@@ -1,0 +1,108 @@
+# Prometheus Alert Rules - Service Mesh
+# ======================================
+
+groups:
+  - name: consciousness_mesh_alerts
+    interval: 30s
+    rules:
+      # Circuit breaker open
+      - alert: CircuitBreakerOpen
+        expr: consciousness_circuit_breaker_state == 2
+        for: 1m
+        labels:
+          severity: high
+          category: mesh
+        annotations:
+          summary: "Circuit breaker open for {{ $labels.source }} -> {{ $labels.target }}"
+          description: "Circuit breaker has been open for more than 1 minute"
+
+      # Circuit breaker half-open (potential instability)
+      - alert: CircuitBreakerHalfOpen
+        expr: consciousness_circuit_breaker_state == 1
+        for: 5m
+        labels:
+          severity: warning
+          category: mesh
+        annotations:
+          summary: "Circuit breaker stuck in half-open for {{ $labels.source }} -> {{ $labels.target }}"
+          description: "Circuit breaker has been half-open for more than 5 minutes"
+
+      # High circuit breaker transitions
+      - alert: FrequentCircuitBreakerTransitions
+        expr: |
+          sum by (source, target) (increase(consciousness_circuit_breaker_transitions_total[15m])) > 5
+        for: 15m
+        labels:
+          severity: warning
+          category: mesh
+        annotations:
+          summary: "Frequent circuit breaker transitions for {{ $labels.source }} -> {{ $labels.target }}"
+          description: "{{ $value }} transitions in the last 15 minutes indicates instability"
+
+      # Mesh routing errors
+      - alert: HighMeshRoutingErrors
+        expr: |
+          sum by (source, target) (rate(consciousness_mesh_routing_errors_total[5m]))
+          /
+          sum by (source, target) (rate(consciousness_mesh_routing_latency_seconds_count[5m]))
+          > 0.05
+        for: 5m
+        labels:
+          severity: high
+          category: mesh
+        annotations:
+          summary: "High routing error rate for {{ $labels.source }} -> {{ $labels.target }}"
+          description: "Routing error rate is {{ $value | humanizePercentage }}"
+
+      # High routing latency
+      - alert: HighMeshRoutingLatency
+        expr: |
+          histogram_quantile(0.95,
+            sum by (source, target, le) (rate(consciousness_mesh_routing_latency_seconds_bucket[5m]))
+          ) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+          category: mesh
+        annotations:
+          summary: "High mesh routing latency for {{ $labels.source }} -> {{ $labels.target }}"
+          description: "P95 routing latency is {{ $value | humanizeDuration }}"
+
+      # Low mesh quality
+      - alert: LowMeshQuality
+        expr: |
+          histogram_quantile(0.5,
+            sum by (source, target, le) (rate(consciousness_mesh_connection_quality_bucket[5m]))
+          ) < 0.7
+        for: 10m
+        labels:
+          severity: warning
+          category: mesh
+        annotations:
+          summary: "Low connection quality for {{ $labels.source }} -> {{ $labels.target }}"
+          description: "Median quality score is {{ $value }}"
+
+      # Node count drop
+      - alert: MeshNodeCountDrop
+        expr: |
+          sum(consciousness_mesh_nodes{state="active"})
+          <
+          sum(consciousness_mesh_nodes{state="active"} offset 10m) * 0.8
+        for: 5m
+        labels:
+          severity: high
+          category: mesh
+        annotations:
+          summary: "Significant drop in active mesh nodes"
+          description: "Active node count dropped by more than 20% in 10 minutes"
+
+      # Low mesh health
+      - alert: LowMeshHealth
+        expr: consciousness_mesh_health_score < 0.8
+        for: 10m
+        labels:
+          severity: warning
+          category: mesh
+        annotations:
+          summary: "Low mesh health score in zone {{ $labels.zone }}"
+          description: "Health score is {{ $value }}"

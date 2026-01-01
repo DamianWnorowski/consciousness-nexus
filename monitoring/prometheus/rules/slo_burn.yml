@@ -1,0 +1,154 @@
+# Prometheus Alert Rules - SLO Burn Rate
+# =======================================
+# Multi-window, multi-burn-rate SLO alerting
+
+groups:
+  - name: consciousness_slo_burn_alerts
+    interval: 30s
+    rules:
+      # =========================================================================
+      # Availability SLO (99.9% = 0.1% error budget)
+      # =========================================================================
+
+      # Fast burn (2% budget in 1 hour)
+      - alert: AvailabilityBurnRateCritical
+        expr: |
+          (
+            sum(rate(consciousness_nexus_http_requests_total{status=~"5.."}[1h]))
+            /
+            sum(rate(consciousness_nexus_http_requests_total[1h]))
+          ) > (14.4 * 0.001)
+          and
+          (
+            sum(rate(consciousness_nexus_http_requests_total{status=~"5.."}[5m]))
+            /
+            sum(rate(consciousness_nexus_http_requests_total[5m]))
+          ) > (14.4 * 0.001)
+        for: 2m
+        labels:
+          severity: critical
+          category: slo
+          slo_name: availability
+          window: fast
+        annotations:
+          summary: "Critical: Availability SLO burn rate exceeded"
+          description: "Consuming error budget 14.4x faster than sustainable. Will exhaust 2% budget in 1 hour."
+
+      # Slow burn (5% budget in 6 hours)
+      - alert: AvailabilityBurnRateHigh
+        expr: |
+          (
+            sum(rate(consciousness_nexus_http_requests_total{status=~"5.."}[6h]))
+            /
+            sum(rate(consciousness_nexus_http_requests_total[6h]))
+          ) > (6 * 0.001)
+          and
+          (
+            sum(rate(consciousness_nexus_http_requests_total{status=~"5.."}[30m]))
+            /
+            sum(rate(consciousness_nexus_http_requests_total[30m]))
+          ) > (6 * 0.001)
+        for: 15m
+        labels:
+          severity: high
+          category: slo
+          slo_name: availability
+          window: slow
+        annotations:
+          summary: "High: Availability SLO burn rate elevated"
+          description: "Consuming error budget 6x faster than sustainable. Will exhaust 5% budget in 6 hours."
+
+      # =========================================================================
+      # Latency SLO (P99 < 2s for 99% of requests)
+      # =========================================================================
+
+      # Fast burn - latency
+      - alert: LatencyBurnRateCritical
+        expr: |
+          (
+            1 - (
+              sum(rate(consciousness_nexus_http_request_duration_seconds_bucket{le="2"}[1h]))
+              /
+              sum(rate(consciousness_nexus_http_request_duration_seconds_count[1h]))
+            )
+          ) > (14.4 * 0.01)
+          and
+          (
+            1 - (
+              sum(rate(consciousness_nexus_http_request_duration_seconds_bucket{le="2"}[5m]))
+              /
+              sum(rate(consciousness_nexus_http_request_duration_seconds_count[5m]))
+            )
+          ) > (14.4 * 0.01)
+        for: 2m
+        labels:
+          severity: critical
+          category: slo
+          slo_name: latency
+          window: fast
+        annotations:
+          summary: "Critical: Latency SLO burn rate exceeded"
+          description: "Too many requests exceeding 2s latency target"
+
+      # Slow burn - latency
+      - alert: LatencyBurnRateHigh
+        expr: |
+          (
+            1 - (
+              sum(rate(consciousness_nexus_http_request_duration_seconds_bucket{le="2"}[6h]))
+              /
+              sum(rate(consciousness_nexus_http_request_duration_seconds_count[6h]))
+            )
+          ) > (6 * 0.01)
+          and
+          (
+            1 - (
+              sum(rate(consciousness_nexus_http_request_duration_seconds_bucket{le="2"}[30m]))
+              /
+              sum(rate(consciousness_nexus_http_request_duration_seconds_count[30m]))
+            )
+          ) > (6 * 0.01)
+        for: 15m
+        labels:
+          severity: high
+          category: slo
+          slo_name: latency
+          window: slow
+        annotations:
+          summary: "High: Latency SLO burn rate elevated"
+          description: "Sustained latency degradation detected"
+
+      # =========================================================================
+      # Error Budget Status
+      # =========================================================================
+
+      # Error budget nearly exhausted
+      - alert: ErrorBudgetLow
+        expr: |
+          1 - (
+            sum(increase(consciousness_slo_requests_out_of_budget_total[30d]))
+            /
+            sum(increase(consciousness_slo_requests_in_budget_total[30d]) + increase(consciousness_slo_requests_out_of_budget_total[30d]))
+          ) < 0.2
+        for: 1h
+        labels:
+          severity: warning
+          category: slo
+        annotations:
+          summary: "Error budget running low"
+          description: "Only {{ $value | humanizePercentage }} of error budget remaining for the month"
+
+      # Error budget exhausted
+      - alert: ErrorBudgetExhausted
+        expr: |
+          sum(increase(consciousness_slo_requests_out_of_budget_total[30d]))
+          /
+          sum(increase(consciousness_slo_requests_in_budget_total[30d]) + increase(consciousness_slo_requests_out_of_budget_total[30d]))
+          > 0.001
+        for: 1h
+        labels:
+          severity: critical
+          category: slo
+        annotations:
+          summary: "Error budget exhausted!"
+          description: "Monthly error budget has been exceeded. Feature freeze recommended."

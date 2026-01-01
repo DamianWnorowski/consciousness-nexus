@@ -34,6 +34,69 @@ rich>=12.5.0
 tqdm>=4.64.0
 psutil>=5.9.0
 
+# =============================================================================
+# OBSERVABILITY STACK - Ultimate 25-Domain Coverage
+# =============================================================================
+
+# OpenTelemetry Core
+opentelemetry-api>=1.21.0
+opentelemetry-sdk>=1.21.0
+opentelemetry-semantic-conventions>=0.42b0
+
+# OpenTelemetry Exporters
+opentelemetry-exporter-otlp>=1.21.0
+opentelemetry-exporter-otlp-proto-grpc>=1.21.0
+opentelemetry-exporter-otlp-proto-http>=1.21.0
+opentelemetry-exporter-prometheus>=0.42b0
+opentelemetry-exporter-jaeger>=1.21.0
+
+# OpenTelemetry Instrumentation
+opentelemetry-instrumentation>=0.42b0
+opentelemetry-instrumentation-fastapi>=0.42b0
+opentelemetry-instrumentation-httpx>=0.42b0
+opentelemetry-instrumentation-aiohttp-client>=0.42b0
+opentelemetry-instrumentation-logging>=0.42b0
+opentelemetry-instrumentation-requests>=0.42b0
+opentelemetry-instrumentation-sqlalchemy>=0.42b0
+opentelemetry-instrumentation-redis>=0.42b0
+opentelemetry-instrumentation-grpc>=0.42b0
+
+# OpenTelemetry Propagators
+opentelemetry-propagator-b3>=1.21.0
+opentelemetry-propagator-jaeger>=1.21.0
+
+# Prometheus Client
+prometheus-client>=0.19.0
+
+# LLM Observability
+langfuse>=2.0.0
+# arize-phoenix>=3.0.0  # Optional: Self-hosted LLM observability
+
+# ML Monitoring (Drift Detection)
+evidently>=0.4.0
+
+# Distributed Tracing Clients
+# jaeger-client>=4.8.0  # Deprecated, use OTLP
+py-zipkin>=1.0.0
+
+# Chaos Engineering
+# steadybit-agent  # Installed separately
+
+# Incident Management
+# pagerduty>=2.0.0  # Optional: PagerDuty integration
+
+# CloudEvents
+cloudevents>=1.10.0
+
+# Data Lake / Analytics
+pyarrow>=14.0.0
+# apache-iceberg>=0.5.0  # Optional: Data lake support
+
+# FastAPI/Starlette (if not already present)
+fastapi>=0.104.0
+starlette>=0.27.0
+uvicorn>=0.24.0
+
 # Security & Cryptography
 cryptography>=38.0.0
 bcrypt>=4.0.0
